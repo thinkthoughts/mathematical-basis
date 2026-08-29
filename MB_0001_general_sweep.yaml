@@ -1,0 +1,190 @@
+# results/MB_0001_general_sweep.yaml
+#
+# Actual output of running tests/MB_0001_general_sweep.py, not a
+# paraphrase of the expected output. If this file's content ever
+# needs to change, it changes by re-running the test, not by editing
+# this file directly.
+
+run_metadata:
+  executable_ref: tests/MB_0001_general_sweep.py
+  run_timestamp_utc: "2026-08-29T21:11:00Z"
+  environment:
+    python: "3.12.3"
+    sympy: "1.14.0"
+
+statement_ref: statements/MB_0001_RESIDUE_CONDITIONING.yaml
+
+output:
+  {
+    "results": [
+      {
+        "m": 6,
+        "phi_m": 2,
+        "C_m_predicted": 3.0,
+        "phi_Pk_over_m": 24,
+        "admissible_a": [
+          1,
+          5
+        ],
+        "per_period_matches": [
+          {
+            "a": 1,
+            "exact_count": 24,
+            "predicted_phi_Pk_over_m": 24,
+            "match": true
+          },
+          {
+            "a": 5,
+            "exact_count": 24,
+            "predicted_phi_Pk_over_m": 24,
+            "match": true
+          }
+        ],
+        "ratio_checks_summary": {
+          "total_checked": 6,
+          "converged_at_largest_L": true,
+          "smallest_L_fluctuation_note": "Smaller L values may fall outside the 1e-3 tolerance due to finite-size effects (bounded remainder term, Theorem 1); this does not affect claim status, which is gated on the largest L only."
+        }
+      },
+      {
+        "m": 10,
+        "phi_m": 4,
+        "C_m_predicted": 2.5,
+        "phi_Pk_over_m": 12,
+        "admissible_a": [
+          1,
+          3,
+          7,
+          9
+        ],
+        "per_period_matches": [
+          {
+            "a": 1,
+            "exact_count": 12,
+            "predicted_phi_Pk_over_m": 12,
+            "match": true
+          },
+          {
+            "a": 3,
+            "exact_count": 12,
+            "predicted_phi_Pk_over_m": 12,
+            "match": true
+          },
+          {
+            "a": 7,
+            "exact_count": 12,
+            "predicted_phi_Pk_over_m": 12,
+            "match": true
+          },
+          {
+            "a": 9,
+            "exact_count": 12,
+            "predicted_phi_Pk_over_m": 12,
+            "match": true
+          }
+        ],
+        "ratio_checks_summary": {
+          "total_checked": 12,
+          "converged_at_largest_L": true,
+          "smallest_L_fluctuation_note": "Smaller L values may fall outside the 1e-3 tolerance due to finite-size effects (bounded remainder term, Theorem 1); this does not affect claim status, which is gated on the largest L only."
+        }
+      },
+      {
+        "m": 30,
+        "phi_m": 8,
+        "C_m_predicted": 3.75,
+        "phi_Pk_over_m": 6,
+        "admissible_a": [
+          1,
+          7,
+          11,
+          13,
+          17,
+          19,
+          23,
+          29
+        ],
+        "per_period_matches": [
+          {
+            "a": 1,
+            "exact_count": 6,
+            "predicted_phi_Pk_over_m": 6,
+            "match": true
+          },
+          {
+            "a": 7,
+            "exact_count": 6,
+            "predicted_phi_Pk_over_m": 6,
+            "match": true
+          },
+          {
+            "a": 11,
+            "exact_count": 6,
+            "predicted_phi_Pk_over_m": 6,
+            "match": true
+          },
+          {
+            "a": 13,
+            "exact_count": 6,
+            "predicted_phi_Pk_over_m": 6,
+            "match": true
+          },
+          {
+            "a": 17,
+            "exact_count": 6,
+            "predicted_phi_Pk_over_m": 6,
+            "match": true
+          },
+          {
+            "a": 19,
+            "exact_count": 6,
+            "predicted_phi_Pk_over_m": 6,
+            "match": true
+          },
+          {
+            "a": 23,
+            "exact_count": 6,
+            "predicted_phi_Pk_over_m": 6,
+            "match": true
+          },
+          {
+            "a": 29,
+            "exact_count": 6,
+            "predicted_phi_Pk_over_m": 6,
+            "match": true
+          }
+        ],
+        "ratio_checks_summary": {
+          "total_checked": 24,
+          "converged_at_largest_L": true,
+          "smallest_L_fluctuation_note": "Smaller L values may fall outside the 1e-3 tolerance due to finite-size effects (bounded remainder term, Theorem 1); this does not affect claim status, which is gated on the largest L only."
+        }
+      }
+    ],
+    "summary": {
+      "Pk": 210,
+      "m_values_tested": [
+        6,
+        10,
+        30
+      ],
+      "L_values_tested": [
+        100000,
+        1000000,
+        10000000
+      ],
+      "all_predictions_confirmed": true,
+      "claim_status": "supported"
+    }
+  }
+
+summary_for_humans:
+  claim_status: supported
+  all_predictions_confirmed: True
+  m_values_tested: [6, 10, 30]
+  note: >
+    One entry (m=30, a=1, L=10^5) fell outside the convergence tolerance
+    at the smallest tested L -- expected per Theorem 1's bounded remainder
+    term, and does not gate claim_status, which is checked only at the
+    largest tested L (10^7) per (m,a) pair. See paper.md Theorem 1 for
+    why smaller L is expected to fluctuate more.
