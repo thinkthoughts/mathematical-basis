@@ -1,57 +1,32 @@
-# mathematical-basis
+# RO_B — Mathematical Basis: the pipeline, walked through via MB_0001
 
-A repository of verified mathematical-basis statements (`MB_####`), each carrying its source provenance, its leading specification, a proof, an executable verification, and a stored result — end to end, one statement at a time.
-
-## What belongs here
-
-A statement earns an `MB_####` entry once it has:
-
-1. **Source provenance** — where the claim originated, preserved as-given under `sources/`.
-2. **A leading specification** — the general mathematical statement, not a specific numerical instance of it.
-3. **A proof** — the mathematical argument establishing the statement, as a standalone artifact (a full paper under `papers/`, or a shorter dedicated file under `proofs/`). A computational check that a claim holds is not a substitute for this; where the claim is a theorem, it needs a mathematical justification, not only numerical support.
-4. **An executable verification** — a script that computes the claim, not a script that asserts it.
-5. **A stored result** — the actual output of running that script, not a paraphrase of an expected output.
-
-A claim that has only some of these is not yet an `MB_####` entry. `persist.pdf`, for example, motivated this repository's first statement but is not itself one — it is a source, audited and found to support a different, more general claim than the one it originally reported. See MB_0001, below, for how that distinction plays out concretely.
-
-Not every statement needs a full paper — MB_0001 has one because the result and its context warranted it; MB_0002 has a shorter dedicated proof file instead, which satisfies requirement 3 equally. Publication (a paper, or eventually an outward-facing writeup) is optional on top of this five-part minimum, not part of it.
-
-## Repo layout
+## The pipeline
 
 ```
-mathematical-basis/
-├── README.md
-├── RO_A_READING_ORDER.md
-├── RO_B_MATHEMATICAL_BASIS.md
-├── .gitattributes                   # *.pdf binary
-├── sources/
-│   ├── mb_0001/
-│   │   ├── README.md
-│   │   └── persist.pdf              # v1.1, historical basis, claims preserved verbatim
-│   └── readingpoint/
-│       └── README.md                # verified excerpt of readingpoint.app's stated principle
-├── statements/
-│   ├── MB_0001_RESIDUE_CONDITIONING.yaml
-│   └── MB_0002_UNIT_GROUP_QUOTIENTS.yaml
-├── proofs/
-│   └── MB_0002_UNIT_GROUP_QUOTIENTS.md
-├── tests/
-│   ├── MB_0001_general_sweep.py
-│   └── MB_0002_unit_group_quotients.py
-├── results/
-│   ├── MB_0001_general_sweep.yaml
-│   └── MB_0002_unit_group_quotients.yaml
-└── papers/
-    └── density-correction/
-        └── paper.md                 # v3.1, current draft (MB_0001 only; MB_0002's proof is in proofs/, not a full paper)
+source provenance  →  leading specification  →  proof  →  executable verification  →  result
+sources/mb_0001/      statements/MB_0001_...     papers/    tests/MB_0001_...          results/MB_0001_...
+persist.pdf            .yaml                     density-   .py                        .yaml
+                                                  correction/
+                                                  paper.md
 ```
 
-## Status
+Each stage is a separate artifact, in a separate directory. None of them is allowed to stand in for another:
 
-- **MB_0001 — Residue Conditioning Specifies a Primorial Density Correction.** mathematical: proved · computational: supported · provenance: audited · publication: draft. Source: `sources/mb_0001/persist.pdf` (audited; its reported constant of 24/25 did not hold, and was superseded by the general result C(m) = m/φ(m)). Statement: `statements/MB_0001_RESIDUE_CONDITIONING.yaml`. Verification: `tests/MB_0001_general_sweep.py`. Result: `results/MB_0001_general_sweep.yaml`. Paper: `papers/density-correction/paper.md`.
-- **MB_0002 — Unit-Group Structure Specifies Distinct Quotient Readings.** mathematical: proved · computational: supported · provenance: audited · publication: draft. Source: motivating prior discussion (RML/OpenWave group-structure context), independently re-derived rather than imported. Establishes (ℤ/30ℤ)ˣ ≅ C4×C2 and that its three order-2 subgroups give non-isomorphic quotients (C2×C2 from ⟨19⟩; C4 from ⟨11⟩ and ⟨29⟩). Statement: `statements/MB_0002_UNIT_GROUP_QUOTIENTS.yaml`. Proof: `proofs/MB_0002_UNIT_GROUP_QUOTIENTS.md`. Verification: `tests/MB_0002_unit_group_quotients.py`. Result: `results/MB_0002_unit_group_quotients.yaml`.
-- **MB_0003 and beyond** — not yet started. `sources/readingpoint/AUDIT.md` was checked as a candidate source and closed with no new statement found (its mod-30 claims are already covered by MB_0001 or are standard facts; see that file for the full audit). Candidates should go through the same source → statement → proof → verification → result pipeline before being numbered, one at a time, rather than being pre-assigned.
+- A source is preserved as originally written, even where it's wrong. `sources/mb_0001/persist.pdf` still says r(L,Pk) → 24/25. That line is not corrected in place — it's audited, and the audit lives elsewhere.
+- A statement is the general claim, stated once, independent of any specific run of a script. `statements/MB_0001_RESIDUE_CONDITIONING.yaml` states C(m) = m/φ(m) for general m; it does not itself contain a computed number.
+- A proof is the mathematical argument, as a standalone artifact — a full paper (`papers/density-correction/paper.md` for MB_0001) or a shorter dedicated file (`proofs/MB_0002_UNIT_GROUP_QUOTIENTS.md` for MB_0002). A statement is not its own proof, and a passing test is not a substitute for one where the claim is a theorem.
+- A verification is code, not prose. `tests/MB_0001_general_sweep.py` is run, not summarized from memory.
+- A result is what that code actually printed, on a specific run. `results/MB_0001_general_sweep.yaml` is that printout, timestamped and attributable to a specific execution of the test file above it — not a restatement of what the result was expected to be.
 
-## Principle
+## How MB_0001 moved through the pipeline
 
-Admissible generalizations trail leading specifications.
+1. `sources/mb_0001/persist.pdf` (v1.1) claimed a specific numerical constant, 24/25, for a specific case (m=6, a=5), based on a numerical table that did not reproduce under its own stated verification code.
+2. Auditing that source (`tests/basis/` in the residue-manifold-learning repo) found the true limit was 3 against the paper's own naive predictor, and that the paper's own Lemma 1 already contained the correction, unapplied.
+3. Generalizing past the single case (m=6, a=5) produced a stronger, more general leading specification: C(m) = m/φ(m) for any squarefree m dividing a primorial Pk, independent of which admissible residue a is chosen. That generalization is `statements/MB_0001_RESIDUE_CONDITIONING.yaml`.
+4. The proof — Theorem 1 in `papers/density-correction/paper.md`, via the Chinese Remainder Theorem and multiplicativity of φ — was written before the statement was treated as settled, not derived after the fact from a passing test.
+5. The generalization was not accepted on the strength of the m=6 case alone, nor on the strength of the proof alone. `tests/MB_0001_general_sweep.py` was written to check it across m ∈ {6,10,30} and every admissible residue for each, and was run before the statement was finalized.
+6. `results/MB_0001_general_sweep.yaml` records that run's actual output, including the one place a naively-set tolerance produced a false negative (m=30, a=1, smallest L) — kept in the result rather than silently corrected, because the fix to the test's tolerance logic is itself part of the provenance of why the claim is trusted.
+
+## What this pipeline is for
+
+Not process for its own sake. `sources/mb_0001/persist.pdf`'s original 45° claim about the 9423 construction (§3 of the paper) went through the same audit process and did not survive it — the pipeline is only useful if it's equally willing to reject a claim as to confirm one. MB_0001 exists because it passed; the 9423 correspondence is documented in the paper precisely because it didn't, and is kept as a worked example rather than deleted.
