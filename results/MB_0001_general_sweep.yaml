@@ -7,10 +7,12 @@
 
 run_metadata:
   executable_ref: tests/MB_0001_general_sweep.py
+  executable_sha256: 16bd7b59dbf6c3c48de0953d3a5f20bc165bffa049bd89042fbfb0d65aaabbc1
   run_timestamp_utc: "2026-08-29T21:11:00Z"
   environment:
     python: "3.12.3"
     sympy: "1.14.0"
+  commit_hash: null   # fill in with `git rev-parse HEAD` at the commit where this result was produced; not knowable outside a git checkout, so left unset rather than fabricated
 
 statement_ref: statements/MB_0001_RESIDUE_CONDITIONING.yaml
 
