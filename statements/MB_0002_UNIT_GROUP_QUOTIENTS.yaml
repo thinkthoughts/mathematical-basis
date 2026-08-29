@@ -1,0 +1,80 @@
+statement:
+  id: MB_0002
+  title: "Unit-Group Structure Specifies Distinct Quotient Readings"
+  repository: mathematical-basis
+
+status:
+  mathematical: proved
+  computational: supported
+  provenance: audited
+  publication: draft
+
+source_provenance:
+  - source_ref: "residue-manifold-learning repo, OpenWave group-structure discussion (Q8-comparison context)"
+    role: motivating_prior_discussion
+    original_claim: "(Z/30Z)^x has three order-2 subgroups giving different quotients, one of which matches C2xC2"
+    original_claim_status: independently_reverified
+    note: >
+      This statement does not import the prior claim on its own authority.
+      Every fact below was re-derived from scratch in this repository's
+      own verification (tests/MB_0002_unit_group_quotients.py) before
+      being recorded here. The prior discussion is recorded as
+      motivating context, not as evidence.
+
+specification:
+  domain:
+    ambient_group: "(Z/30Z)^x, the multiplicative group of units modulo 30"
+    order: 8
+    constraints:
+      - "Isomorphism type determined by element-order profile: an abelian group of order 8 is C8, C4xC2, or C2xC2xC2, distinguished uniquely by its count of order-2 elements (1, 3, or 7 respectively)."
+
+  statement: >
+    (Z/30Z)^x is isomorphic to C4 x C2. It has exactly three distinct
+    subgroups of order 2 -- <11>={1,11}, <19>={1,19}, <29>={1,29} --
+    and the quotient (Z/30Z)^x / H depends on which of the three is
+    chosen for H: quotienting by <19> yields C2 x C2, while quotienting
+    by either <11> or <29> yields C4. No single quotient type is forced
+    by the ambient group alone; the choice of substructure specifies
+    the reading.
+
+  element_orders:
+    1: 1
+    7: 4
+    11: 2
+    13: 4
+    17: 4
+    19: 2
+    23: 4
+    29: 2
+
+  quotients:
+    - {subgroup: [1, 11], quotient_type: "C4"}
+    - {subgroup: [1, 19], quotient_type: "C2xC2"}
+    - {subgroup: [1, 29], quotient_type: "C4"}
+
+  leading_constraints:
+    - "The isomorphism (Z/30Z)^x =~ C4xC2 is established by element-order profile, not by asserting a group-table match without justification."
+    - "A quotient result for one order-2 subgroup does not extend to the other two order-2 subgroups without separate verification -- this is the statement's central content, not an incidental detail."
+    - "This statement is a purely algebraic result; it does not establish physical_correspondence of any kind."
+
+  excluded_generalizations:
+    - "A general theorem about which subgroups of any C4xC2-type group produce which quotient type. This statement establishes the specific case (Z/30Z)^x only; whether the pattern generalizes to other groups of this isomorphism type is an open question, not asserted here."
+    - "Any claim that the C2xC2 quotient obtained from <19> is more canonical, natural, or preferred than the C4 quotients from <11> or <29>. All three are equally valid quotients of equally valid subgroups; none is privileged by the ambient group structure alone."
+
+verification:
+  proof_ref: "statement above (specification.statement), plus the element-order-profile argument in leading_constraints"
+  proof_location: "this file; no separate paper.md yet -- promote to papers/ if this statement grows or gains dependents"
+  executable_ref: tests/MB_0002_unit_group_quotients.py
+
+result:
+  result_ref: results/MB_0002_unit_group_quotients.yaml
+  claim_status: supported
+  summary: >
+    Element-order profile confirms (Z/30Z)^x =~ C4xC2 (3 elements of
+    order 2, 4 of order 4, 0 of order 8). All three order-2 subgroups
+    enumerated; quotient computed for each via explicit coset
+    construction and element-order check in the quotient. Result
+    matches the statement exactly: <19> -> C2xC2, <11> -> C4, <29> -> C4.
+
+footer:
+  principle: "Admissible generalizations trail leading specifications."
