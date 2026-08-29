@@ -21,7 +21,7 @@ mathematical-basis/
 ├── RO_A_READING_ORDER.md
 ├── RO_B_MATHEMATICAL_BASIS.md
 ├── sources/
-│   ├── persist/
+│   ├── mb0001-origin/
 │   │   └── persist.pdf              # v1.1, historical basis, claims preserved verbatim
 │   └── readingpoint/
 │       └── (readingpoint.app framework references)
@@ -38,7 +38,7 @@ mathematical-basis/
 
 ## Status
 
-- **MB_0001 — Residue Conditioning Specifies a Primorial Density Correction.** Verified. Source: `sources/persist/persist.pdf` (audited; its reported constant of 24/25 did not hold, and was superseded by the general result C(m) = m/φ(m)). Statement: `statements/MB_0001_RESIDUE_CONDITIONING.yaml`. Verification: `tests/MB_0001_general_sweep.py`. Result: `results/MB_0001_general_sweep.yaml`. Paper: `papers/density-correction/paper.md`.
+- **MB_0001 — Residue Conditioning Specifies a Primorial Density Correction.** Verified. Source: `sources/mb0001-origin/persist.pdf` (audited; its reported constant of 24/25 did not hold, and was superseded by the general result C(m) = m/φ(m)). Statement: `statements/MB_0001_RESIDUE_CONDITIONING.yaml`. Verification: `tests/MB_0001_general_sweep.py`. Result: `results/MB_0001_general_sweep.yaml`. Paper: `papers/density-correction/paper.md`.
 - **MB_0002 and beyond** — not yet started. Candidates should go through the same source → statement → verification → result pipeline before being numbered, one at a time, rather than being pre-assigned.
 
 ## Principle
