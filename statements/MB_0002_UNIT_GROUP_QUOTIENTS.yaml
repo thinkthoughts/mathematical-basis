@@ -33,9 +33,16 @@ specification:
     subgroups of order 2 -- <11>={1,11}, <19>={1,19}, <29>={1,29} --
     and the quotient (Z/30Z)^x / H depends on which of the three is
     chosen for H: quotienting by <19> yields C2 x C2, while quotienting
-    by either <11> or <29> yields C4. No single quotient type is forced
-    by the ambient group alone; the choice of substructure specifies
-    the reading.
+    by either <11> or <29> yields C4. No single quotient isomorphism
+    type is determined by the ambient group and subgroup order alone;
+    the specific subgroup H must be specified.
+
+  project_interpretation: >
+    The choice of substructure specifies the reading. This framing
+    connects the mathematical result above to this project's broader
+    label/reading/specification vocabulary (see sources/readingpoint/),
+    but is not itself part of the theorem -- the mathematical statement
+    holds independent of this interpretive layer.
 
   element_orders:
     1: 1
