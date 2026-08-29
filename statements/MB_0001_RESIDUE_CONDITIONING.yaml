@@ -50,7 +50,7 @@ specification:
     - "This statement is a purely arithmetic result; it does not establish physical_correspondence of any kind (see correspondence.yaml's firewall, residue-manifold-learning repo)."
 
   excluded_generalizations:
-    - "C(m) for non-squarefree m or non-primorial Pk (the proof uses squarefreeness throughout)."
+    - "Extensions to moduli containing repeated prime powers, or to ambient moduli outside the stated primorial construction, are outside MB_0001."
     - "The 9423 weighted-vector construction (paper.md Section 3) as part of this statement's leading specification -- it is a separate, rejected correspondence claim retained in the paper only as a worked example."
 
 verification:
