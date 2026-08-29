@@ -1,6 +1,6 @@
 # mathematical-basis
 
-A repository of verified mathematical-basis statements (`MB_####`), each carrying its source provenance, its leading specification, an executable verification, and a stored result — end to end, one statement at a time.
+A repository of verified mathematical-basis statements (`MB_####`), each carrying its source provenance, its leading specification, a proof, an executable verification, and a stored result — end to end, one statement at a time.
 
 ## What belongs here
 
@@ -8,10 +8,13 @@ A statement earns an `MB_####` entry once it has:
 
 1. **Source provenance** — where the claim originated, preserved as-given under `sources/`.
 2. **A leading specification** — the general mathematical statement, not a specific numerical instance of it.
-3. **An executable verification** — a script that computes the claim, not a script that asserts it.
-4. **A stored result** — the actual output of running that script, not a paraphrase of an expected output.
+3. **A proof** — the mathematical argument establishing the statement, as a standalone artifact (a full paper under `papers/`, or a shorter dedicated file under `proofs/`). A computational check that a claim holds is not a substitute for this; where the claim is a theorem, it needs a mathematical justification, not only numerical support.
+4. **An executable verification** — a script that computes the claim, not a script that asserts it.
+5. **A stored result** — the actual output of running that script, not a paraphrase of an expected output.
 
 A claim that has only some of these is not yet an `MB_####` entry. `persist.pdf`, for example, motivated this repository's first statement but is not itself one — it is a source, audited and found to support a different, more general claim than the one it originally reported. See MB_0001, below, for how that distinction plays out concretely.
+
+Not every statement needs a full paper — MB_0001 has one because the result and its context warranted it; MB_0002 has a shorter dedicated proof file instead, which satisfies requirement 3 equally. Publication (a paper, or eventually an outward-facing writeup) is optional on top of this five-part minimum, not part of it.
 
 ## Repo layout
 
