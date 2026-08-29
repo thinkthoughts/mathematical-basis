@@ -58,12 +58,11 @@ specification:
     - "This statement is a purely algebraic result; it does not establish physical_correspondence of any kind."
 
   excluded_generalizations:
-    - "A general theorem about which subgroups of any C4xC2-type group produce which quotient type. This statement establishes the specific case (Z/30Z)^x only; whether the pattern generalizes to other groups of this isomorphism type is an open question, not asserted here."
+    - "A general classification of order-2 subgroups and quotient types in arbitrary groups isomorphic to C4xC2 is outside MB_0002's scope. This is not mathematically open -- it is standard, tractable group theory -- but this statement establishes the specific structure of (Z/30Z)^x only and does not generalize beyond it."
     - "Any claim that the C2xC2 quotient obtained from <19> is more canonical, natural, or preferred than the C4 quotients from <11> or <29>. All three are equally valid quotients of equally valid subgroups; none is privileged by the ambient group structure alone."
 
 verification:
-  proof_ref: "statement above (specification.statement), plus the element-order-profile argument in leading_constraints"
-  proof_location: "this file; no separate paper.md yet -- promote to papers/ if this statement grows or gains dependents"
+  proof_ref: proofs/MB_0002_UNIT_GROUP_QUOTIENTS.md
   executable_ref: tests/MB_0002_unit_group_quotients.py
 
 result:
