@@ -41,7 +41,8 @@ mathematical-basis/
 ## Status
 
 - **MB_0001 — Residue Conditioning Specifies a Primorial Density Correction.** mathematical: proved · computational: supported · provenance: audited · publication: draft. Source: `sources/mb_0001/persist.pdf` (audited; its reported constant of 24/25 did not hold, and was superseded by the general result C(m) = m/φ(m)). Statement: `statements/MB_0001_RESIDUE_CONDITIONING.yaml`. Verification: `tests/MB_0001_general_sweep.py`. Result: `results/MB_0001_general_sweep.yaml`. Paper: `papers/density-correction/paper.md`.
-- **MB_0002 and beyond** — not yet started. Candidates should go through the same source → statement → verification → result pipeline before being numbered, one at a time, rather than being pre-assigned.
+- **MB_0002 — Unit-Group Structure Specifies Distinct Quotient Readings.** mathematical: proved · computational: supported · provenance: audited · publication: draft. Source: motivating prior discussion (RML/OpenWave group-structure context), independently re-derived rather than imported. Establishes (ℤ/30ℤ)ˣ ≅ C4×C2 and that its three order-2 subgroups give non-isomorphic quotients (C2×C2 from ⟨19⟩; C4 from ⟨11⟩ and ⟨29⟩). Statement: `statements/MB_0002_UNIT_GROUP_QUOTIENTS.yaml`. Verification: `tests/MB_0002_unit_group_quotients.py`. Result: `results/MB_0002_unit_group_quotients.yaml`. No separate paper yet — proof is inline in the statement.
+- **MB_0003 and beyond** — not yet started. `sources/readingpoint/AUDIT.md` was checked as a candidate source and closed with no new statement found (its mod-30 claims are already covered by MB_0001 or are standard facts; see that file for the full audit). Candidates should go through the same source → statement → verification → result pipeline before being numbered, one at a time, rather than being pre-assigned.
 
 ## Principle
 
