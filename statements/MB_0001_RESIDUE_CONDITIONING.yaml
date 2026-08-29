@@ -2,73 +2,73 @@ statement:
   id: MB_0001
   title: "Residue Conditioning Specifies a Primorial Density Correction"
   repository: mathematical-basis
-  status: verified
 
-paper:
-  title: "Density Correction under Residue Conditioning in Primorial Systems"
-  path: "papers/density-correction/paper.md"
-  version: "3.1"
-  source_provenance: "paper/persist.pdf v1.1 (historical basis, results/basis/)"
+status:
+  mathematical: proved
+  computational: supported
+  provenance: audited
+  publication: draft
 
-engineering_statement:
+source_provenance:
+  - source_ref: sources/mb_0001/persist.pdf
+    role: historical_hypothesis_source
+    original_claim: "r(L, Pk) -> 24/25, for m=6, a=5"
+    original_claim_status: superseded
+    sha256: 8faa1cc0d02b6498b7e41906d80ce67dcb51bfb982aed9e41e96b3d3a17cb046
+    note: >
+      Preserved verbatim at the ref above. Its reported constant did not
+      reproduce under its own stated verification code; the audit that
+      found this lives in the residue-manifold-learning repo's
+      tests/basis/, not in this repository.
 
-  premise:
-    - "A count of integers up to L conditioned on n ≡ a (mod m) and gcd(n, Pk) = 1, for m | Pk squarefree and gcd(a,m)=1, departs from the naive independent-density prediction by an exact factor."
-    - "The naive predictor double-counts: conditioning on n ≡ a (mod m) already enforces coprimality to every prime dividing m, so re-multiplying by φ(Pk)/Pk re-imposes that restriction."
-    - "The correction factor is C(m) = m/φ(m), proved via CRT and multiplicativity of φ, requiring no sieve-theoretic or analytic machinery."
+specification:
+  domain:
+    primorial: Pk
+    modulus: m
+    residue: a
+    constraints:
+      - "m divides Pk"
+      - "m > 1"
+      - "gcd(a, m) = 1"
+      - "Pk squarefree (product of the first k primes)"
 
-  leading_specification:
-    statement: "C(m) = m / φ(m)"
-    domain: "m squarefree, m | Pk, m > 1"
-    exact_per_period_count: "φ(Pk/m)"
-    independence: "The per-period count is independent of which admissible residue a (gcd(a,m)=1) is chosen."
+  statement: >
+    The exact correction factor between the conditioned coprimality
+    count |{n <= L : n === a (mod m), gcd(n, Pk) = 1}| and the naive
+    independent-density predictor (phi(Pk)/Pk)*(L/m) is
+    C(m) = m / phi(m), independent of which admissible residue a is
+    chosen. The exact per-period count (period Pk) is phi(Pk/m).
 
-  admissible_object:
-    - name: "Pk"
-      role: "The k-th primorial; squarefree by construction."
-    - name: "m"
-      role: "Any squarefree divisor of Pk with m > 1; specifies the residue modulus."
-    - name: "a"
-      role: "Any residue with gcd(a,m)=1; specifies the admissible class. Result is independent of the specific a chosen."
-
-  specialization:
-    - {m: 6, C_m: 3, note: "corrects an earlier draft's reported constant of 24/25 for m=6, a=5"}
-    - {m: 10, C_m: 2.5}
-    - {m: 30, C_m: 3.75}
-
-  reading:
-    - "Each specialization C(m) is a numerical reading of the leading specification C(m)=m/φ(m), not a separately discovered constant."
-    - "The single ratio r(L,Pk) for m=6,a=5 took three different values (24/25, 3, 1) across this project's development, none meaningful without stating which predictor produced it — see paper §3."
+  specializations:
+    - {m: 6, C_m: 3, phi_Pk_over_m_at_Pk_210: 24}
+    - {m: 10, C_m: 2.5, phi_Pk_over_m_at_Pk_210: 12}
+    - {m: 30, C_m: 3.75, phi_Pk_over_m_at_Pk_210: 6}
 
   leading_constraints:
     - "A shared label does not establish a shared reading."
     - "A shared reading does not, on its own, establish a shared specification."
-    - "physical_correspondence (per correspondence.yaml's firewall) is not established by this statement; this is a purely arithmetic result."
-
-  verification:
-    - executable_ref: "tests/basis/test_persistent_constant.py"
-      scope: "m=6, a=5; naive and refined ratios at L=10^5..10^8"
-      result: "naive ratio -> 3.00000, refined ratio -> 1.00000"
-    - executable_ref: "tests/MB_0001_general_sweep.py"
-      scope: "m in {6,10,30}, all admissible a mod m, L in {10^5,10^6,10^7}"
-      result: "claim_status: supported. C(m) matches m/phi(m) at the largest tested L (10^7) for every (m,a) pair; exact per-period count matches phi(Pk/m) for every tested a. At the smallest L (10^5, m=30, a=1) the ratio falls outside a 1e-3 tolerance by 0.0011 -- expected finite-size fluctuation per Theorem 1's bounded remainder term, not a failure of the claim; convergence is gated on the largest L only, not on every tested L."
-
-  admissible_generalizations:
-    - "The correction generalizes beyond m=6; C(m)=m/phi(m) holds for any squarefree m|Pk."
-    - "Combining multiple admissible residue classes mod m preserves the same ratio C(m) (Corollary 2)."
+    - "This statement is a purely arithmetic result; it does not establish physical_correspondence of any kind (see correspondence.yaml's firewall, residue-manifold-learning repo)."
 
   excluded_generalizations:
-    - "C(m) implies anything about non-squarefree m or non-primorial Pk; the proof uses squarefreeness throughout."
-    - "This statement establishes a physical correspondence of any kind."
-    - "The 9423 weighted-vector construction (paper §3) is part of this statement's leading specification; it is a separate, rejected correspondence claim retained only as a worked example."
+    - "C(m) for non-squarefree m or non-primorial Pk (the proof uses squarefreeness throughout)."
+    - "The 9423 weighted-vector construction (paper.md Section 3) as part of this statement's leading specification -- it is a separate, rejected correspondence claim retained in the paper only as a worked example."
 
-  concise_statement: >
-    Where m is a squarefree divisor of a primorial Pk and a is any residue
-    coprime to m, conditioning a coprimality count on n ≡ a (mod m) departs
-    from the naive independent-density prediction by an exact, provable
-    factor C(m) = m/φ(m), independent of the specific admissible a chosen;
-    its specializations (C(6)=3, C(10)=5/2, C(30)=15/4) are readings of
-    this single leading specification, not separately discovered constants.
+verification:
+  proof_ref: papers/density-correction/paper.md
+  proof_location: "Section 2, Theorem 1"
+  executable_ref: tests/MB_0001_general_sweep.py
+  executable_sha256: 16bd7b59dbf6c3c48de0953d3a5f20bc165bffa049bd89042fbfb0d65aaabbc1
+
+result:
+  result_ref: results/MB_0001_general_sweep.yaml
+  claim_status: supported
+  summary: >
+    C(m) matches m/phi(m) at the largest tested L (10^7) for every (m,a)
+    pair across m in {6,10,30}; exact per-period count matches
+    phi(Pk/m) for every tested admissible a. One entry (m=30, a=1,
+    smallest tested L) fell outside tolerance as expected finite-size
+    fluctuation per Theorem 1's bounded remainder term; this does not
+    gate claim_status.
 
 footer:
   principle: "Admissible generalizations trail leading specifications."
