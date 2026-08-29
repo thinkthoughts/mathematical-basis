@@ -1,0 +1,172 @@
+# results/MB_0002_unit_group_quotients.yaml
+#
+# Actual output of running tests/MB_0002_unit_group_quotients.py, not
+# a paraphrase of the expected output.
+
+run_metadata:
+  executable_ref: tests/MB_0002_unit_group_quotients.py
+  executable_sha256: b09347654d002cdba3abc49e64afe99f472905e07a8b2de533657d55382ef2a4
+  run_timestamp_utc: "2026-08-29T23:29:33Z"
+  environment:
+    python: "3.12.3"
+  commit_hash: null   # fill in with `git rev-parse HEAD` at the commit where this result was produced
+
+statement_ref: statements/MB_0002_UNIT_GROUP_QUOTIENTS.yaml
+
+output:
+  {
+    "units": [
+      1,
+      7,
+      11,
+      13,
+      17,
+      19,
+      23,
+      29
+    ],
+    "element_orders": {
+      "1": 1,
+      "7": 4,
+      "11": 2,
+      "13": 4,
+      "17": 4,
+      "19": 2,
+      "23": 4,
+      "29": 2
+    },
+    "order_2_elements": [
+      11,
+      19,
+      29
+    ],
+    "order_4_elements": [
+      7,
+      13,
+      17,
+      23
+    ],
+    "quotient_results": [
+      {
+        "generator": 11,
+        "subgroup": [
+          1,
+          11
+        ],
+        "cosets": [
+          [
+            1,
+            11
+          ],
+          [
+            7,
+            17
+          ],
+          [
+            13,
+            23
+          ],
+          [
+            19,
+            29
+          ]
+        ],
+        "quotient_element_orders": {
+          "1": 1,
+          "7": 4,
+          "13": 4,
+          "19": 2
+        },
+        "quotient_type": "C4"
+      },
+      {
+        "generator": 19,
+        "subgroup": [
+          1,
+          19
+        ],
+        "cosets": [
+          [
+            1,
+            19
+          ],
+          [
+            7,
+            13
+          ],
+          [
+            11,
+            29
+          ],
+          [
+            17,
+            23
+          ]
+        ],
+        "quotient_element_orders": {
+          "1": 1,
+          "7": 2,
+          "11": 2,
+          "17": 2
+        },
+        "quotient_type": "C2xC2"
+      },
+      {
+        "generator": 29,
+        "subgroup": [
+          1,
+          29
+        ],
+        "cosets": [
+          [
+            1,
+            29
+          ],
+          [
+            7,
+            23
+          ],
+          [
+            11,
+            19
+          ],
+          [
+            13,
+            17
+          ]
+        ],
+        "quotient_element_orders": {
+          "1": 1,
+          "7": 4,
+          "11": 2,
+          "13": 4
+        },
+        "quotient_type": "C4"
+      }
+    ],
+    "summary": {
+      "group_type_confirmed": "C4xC2",
+      "group_type_expected": "C4xC2",
+      "group_type_match": true,
+      "order_2_subgroup_count": 3,
+      "order_2_subgroup_count_expected": 3,
+      "quotient_types": {
+        "11": "C4",
+        "19": "C2xC2",
+        "29": "C4"
+      },
+      "quotient_types_expected": {
+        "19": "C2xC2",
+        "11": "C4",
+        "29": "C4"
+      },
+      "distinct_quotient_types_from_same_ambient_group": true,
+      "claim_status": "supported"
+    }
+  }
+
+summary_for_humans:
+  claim_status: supported
+  group_type_confirmed: C4xC2
+  order_2_subgroup_count: 3
+  quotient_types: {'11': 'C4', '19': 'C2xC2', '29': 'C4'}
