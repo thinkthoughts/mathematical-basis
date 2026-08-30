@@ -16,7 +16,7 @@ The orientation with all lines in the order listed above reproduces Baez's Table
 
 ## Claim
 
-Exactly 16 of the 128 orientations are alternative (Artin's criterion). All 16 are isomorphic to the standard octonions via explicit basis sign flips. The remaining 112 are not alternative.
+Exactly 16 of the 128 orientations are alternative (full associator alternation, per Artin's theorem). All 16 are isomorphic to the standard octonions via explicit basis sign flips. The remaining 112 are not alternative.
 
 ## Proof
 
@@ -42,32 +42,58 @@ This shows: alternative orientations ⊇ image(M), with 16 ≤ |alternative orie
 
 **Part 4: the alternative set is exactly the null space of an explicit, closed-form constraint system — derived without reference to the exhaustive count.**
 
-For each unordered triple {i,j,k} of distinct points, the associator-alternation condition [e_i,e_j,e_k] = −[e_j,e_i,e_k] was expanded symbolically. Each of the four terms in this identity ((e_ie_j)e_k, e_i(e_je_k), (e_je_i)e_k, e_j(e_ie_k)) has the form (base sign) × (−1)^(orientation bits of the lines used) × (a basis element or scalar) — the sign is manifestly 𝔽₂-linear in the orientation vector s, since composing two such signed products multiplies signs, and multiplying two ±1 values of the form (−1)^(linear combination) is itself (−1)^(XOR of the combinations) — an 𝔽₂-linear operation, not merely observed to behave linearly by testing.
+For each unordered triple {i,j,k} of distinct points, the **first antisymmetry identity**, [e_i,e_j,e_k] = −[e_j,e_i,e_k] (swapping the first two arguments), was expanded symbolically. Each of the four terms in this identity ((e_ie_j)e_k, e_i(e_je_k), (e_je_i)e_k, e_j(e_ie_k)) has the form (base sign) × (−1)^(orientation bits of the lines used) × (a basis element or scalar) — the sign is manifestly 𝔽₂-linear in the orientation vector s, since composing two such signed products multiplies signs, and multiplying two ±1 values of the form (−1)^(linear combination) is itself (−1)^(XOR of the combinations) — an 𝔽₂-linear operation, not merely observed to behave linearly by testing.
 
 Two cases arise:
 
-- If {i,j,k} is itself one of the seven lines, both associator terms trace back to squaring the same basis element (e_r² = −1, independent of orientation), and the resulting condition holds automatically for either choice of that line's orientation — this case imposes **no constraint** (confirmed directly: both local values of the line's bit satisfy the identity).
-- If {i,j,k} is not a line (28 of the 35 possible triples), the condition reduces to a single non-trivial linear equation in the orientation bits of the (up to 6) lines the triple's three pairs touch.
+- If {i,j,k} is itself one of the seven lines, both terms trace back to squaring the same basis element (e_r² = −1, independent of orientation), and the resulting condition holds automatically for either choice of that line's orientation — this case imposes **no constraint**.
+- If {i,j,k} is not a line (28 of the 35 possible triples), the condition reduces to a single non-trivial linear equation in the orientation bits.
 
-Extracting the explicit coefficient vector for each of the 28 non-line triples (by evaluating the known-linear condition against its own point set — a standard interpolation of an already-established linear form, not a search for whether the form exists) gives, after removing duplicates, exactly **seven distinct constraints** — one for each point p ∈ {1,...,7}:
+Extracting the explicit coefficient vector for each of the 28 non-line triples (by evaluating the known-linear condition against its own point set — interpolating a form already established to be linear, not searching for whether it is one) gives, after removing duplicates, exactly **seven distinct constraints** — one for each point p ∈ {1,...,7}:
 
   Σ_{ℓ: p ∉ ℓ} s_ℓ ≡ 0 (mod 2)
 
-i.e., for each point p, the sum of orientation bits over the four lines *not containing* p must be even. (Each point lies on 3 of the 7 lines and is absent from the other 4, so this sum has exactly 4 terms.) Each of the 28 triples maps to exactly one of these 7 point-indexed constraints; the map is 4-to-1, consistent with the Fano plane's symmetry.
+i.e., for each point p, the sum of orientation bits over the four lines *not containing* p must be even. Writing these seven equations as the rows of a 7×7 matrix C, indexed by points (rows) and lines (columns), with C_{p,ℓ} = 1 iff p ∉ L_ℓ:
 
-This 7×7 constraint system (rows indexed by points, columns by lines) has rank 3 over 𝔽₂ — computed directly from these seven closed-form rows, independent of Part 2's matrix M. Its null space therefore has dimension 7−3 = 4, i.e. 16 elements — again, independent of Part 2.
+```
+        L1 L2 L3 L4 L5 L6 L7
+  p=1:   0  1  1  1  0  1  0
+  p=2:   0  0  1  1  1  0  1
+  p=3:   1  0  0  1  1  1  0
+  p=4:   0  1  0  0  1  1  1
+  p=5:   1  0  1  0  0  1  1
+  p=6:   1  1  0  1  0  0  1
+  p=7:   1  1  1  0  1  0  0
+```
 
-**Part 5: the two independently-derived 16-element sets coincide.**
+the condition is exactly **Cs = 0 (mod 2)**. (Each row has weight 4, since every point lies on 3 of the 7 lines and is absent from the other 4.)
 
-Part 3 established image(M) — derived from the sign-flip/isomorphism argument — is a 4-dimensional subspace, all of it alternative. Part 4 established, independently and purely from expanding the associator identity, that the full alternative set is exactly a different-looking 4-dimensional subspace (the null space of the point-indexed constraint system). Direct comparison (both are explicit subspaces of 𝔽₂⁷, computed independently) shows these two subspaces are identical as sets.
+**The second antisymmetry identity**, [e_i,e_j,e_k] = −[e_i,e_k,e_j] (swapping the last two arguments), was checked by the identical symbolic method and produces the **same seven constraint rows**, verified directly rather than assumed from Baez's paper's general remark that any two of the three transposition-antisymmetries imply the third. Both identities together are Artin's full criterion for alternativity; since both reduce to the same system Cs=0, that system fully characterizes alternativity for this construction, not merely the first-swap identity alone.
+
+**Part 5: Cs=0 exactly characterizes im(M), via a design-theoretic identity — not by comparing two independently-computed ranks.**
+
+Notice C = J + Mᵀ (mod 2), where J is the 7×7 all-ones matrix — directly checkable entry-by-entry, since C_{p,ℓ}=1 iff p∉L_ℓ iff Mᵀ_{p,ℓ}=0 iff (J+Mᵀ)_{p,ℓ}=1.
+
+Two facts about the Fano plane's design (r=3 lines through each point, λ=1 common line through each pair of points — both direct consequences of the Fano plane axioms verified in Setup) give, over 𝔽₂:
+
+  MᵀM = J   (since (MᵀM)_{p,q} = number of lines containing both p and q — this is r=3≡1 when p=q, and λ=1 when p≠q, so every entry is 1)
+  JM = J    (since (JM)_{ℓ,p}... row p of JM sums M's rows, giving, for each column, the number of lines through that point, r=3≡1, so every entry is 1 — equivalently, each row of M sums to 3≡1, matching J's row)
+
+Therefore:
+
+  CM = (J + Mᵀ)M = JM + MᵀM = J + J = 0 (mod 2),
+
+identically — **no case analysis over triples required for this step**. So im(M) ⊆ ker(C) = {s : Cs = 0}.
+
+Since im(M) has dimension 4 (Part 2), ker(C) has dimension ≥ 4, so rank(C) ≤ 7−4 = 3. Separately, the general linear-algebra inequality rank(A+B) ≥ |rank(A) − rank(B)| (valid over any field) gives rank(C) = rank(J+Mᵀ) ≥ |rank(J) − rank(Mᵀ)| = |1 − 4| = 3. Combining both bounds, rank(C) = 3 exactly, so dim ker(C) = 4 = dim im(M). Since im(M) ⊆ ker(C) and both have the same finite dimension, **im(M) = ker(C) exactly** — without needing to independently compute or compare two separately-derived 16-element sets.
 
 **Conclusion.** An orientation s is alternative if and only if, for every point p, the sum of orientation bits over the four lines not containing p is even — equivalently, if and only if s ∈ image(M). Since every element of image(M) is explicitly, constructively isomorphic to the standard octonions (Part 3), all 16 alternative orientations give the same algebra up to isomorphism. ∎
 
-The exhaustive 128-orientation computer check (`tests/MB_0003_fano_orientations.py`) is, given the above, **independent verification of an already-complete analytic proof** — not an ingredient the proof depends on. It confirms the same 16-element count and the same specific orientations, by brute force, as a check against errors in Parts 1–5, exactly the same role MB_0001's and MB_0002's tests play relative to their proofs.
+The exhaustive 128-orientation computer check (`tests/MB_0003_fano_orientations.py`) is, given the above, **independent verification of an already-complete analytic proof** — not an ingredient the proof depends on. It confirms the same 16-element count and the same specific orientations, by brute force, checking both antisymmetry identities directly on all 128 orientations, as a check against errors in Parts 1–5, exactly the same role MB_0001's and MB_0002's tests play relative to their proofs.
 
 ## What this proof establishes that the exhaustive check alone does not
 
-The proof (Parts 1-5) is fully analytic: it derives the classification from the algebraic structure of the sign representation and the associator identity directly, reaching a closed-form characterization (for each point p, the sum of orientation bits over the four lines not containing p must be even) without counting through all 128 orientations at any stage. The number 16 is derived twice, independently — once as 2^rank(M) from the sign-flip symmetry (Part 2), once as 2^(7-rank(constraints)) from the associator expansion (Part 4) — and the two derivations are shown to describe the same set (Part 5), which is itself part of the proof's content, not a coincidence deferred to computation. The exhaustive 128-orientation test is independent verification of this analytic result, in the same relationship MB_0001's and MB_0002's tests have to their proofs — not an ingredient the proof's logical structure depends on.
+The proof (Parts 1-5) is fully analytic. Part 4 derives a closed-form constraint system directly from the associator identity, verified for both antisymmetry swaps independently rather than assumed from one. Part 5 then shows this system's null space equals im(M) via a design-theoretic identity (C = J + Mᵀ, together with MᵀM = J and JM = J, both direct consequences of the Fano plane's incidence structure) rather than by independently computing two ranks and observing they match — CM=0 is an algebraic identity, not a coincidence of two computed numbers. The exhaustive 128-orientation test is independent verification of this analytic result, in the same relationship MB_0001's and MB_0002's tests have to their proofs — not an ingredient the proof's logical structure depends on.
 
 ## Scope
 
