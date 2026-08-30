@@ -27,7 +27,7 @@ Cycle 1 named three source-provenance relationships (correction, independent re-
 | MB_0001 | historical_hypothesis_source | `superseded` | Source's specific claim was wrong; corrected and generalized |
 | MB_0002 | motivating_prior_discussion | `independently_reverified` | Source was informal/unwritten; independently re-derived from scratch |
 | MB_0003 | canonical_reference | `independently_reverified_and_extended` | Source's specific claim was correct; extended past what it claimed |
-| MB_0004 | canonical_reference | `independently_reverified` | Source's claim re-verified as stated; not extended, not corrected |
+| MB_0004 | canonical_reference | `independently_reverified` | Source's claim re-verified as stated (computationally, for small instances; mathematically, via structural proof audit rather than from-scratch re-derivation — see `status.mathematical: audited`); not extended, not corrected |
 
 MB_0003 and MB_0004 share a `role` (canonical_reference) but differ in `original_claim_status` (extended vs. not) — confirming the two fields are doing genuinely independent work, not redundant ones. Worth carrying into any future SG treatment of provenance: it's at least a two-dimensional space (how authoritative was the source; what did this project do with it), not a single "how was it used" label.
 
