@@ -28,34 +28,37 @@ mathematical-basis/
 │   ├── mb_0001/
 │   │   ├── README.md
 │   │   └── persist.pdf              # v1.1, historical basis, claims preserved verbatim
+│   ├── mb_0003/
+│   │   └── baez-octonions.md        # excerpt of Baez's Table 1 and Fano-plane construction
 │   └── readingpoint/
-│       └── README.md                # verified excerpt of readingpoint.app's stated principle
+│       ├── README.md                # verified excerpt of readingpoint.app's stated principle
+│       └── AUDIT.md                 # closed audit: no MB candidate found on the current page
 ├── statements/
 │   ├── MB_0001_RESIDUE_CONDITIONING.yaml
-│   └── MB_0002_UNIT_GROUP_QUOTIENTS.yaml
-sources/
-├── mb_0001/
-│   ├── README.md
-│   └── persist.pdf
-└── readingpoint/
-    ├── README.md
-    └── AUDIT.md
+│   ├── MB_0002_UNIT_GROUP_QUOTIENTS.yaml
+│   └── MB_0003_FANO_ORIENTATIONS.yaml
+├── proofs/
+│   ├── MB_0002_UNIT_GROUP_QUOTIENTS.md
+│   └── MB_0003_FANO_ORIENTATIONS.md
 ├── tests/
 │   ├── MB_0001_general_sweep.py
-│   └── MB_0002_unit_group_quotients.py
+│   ├── MB_0002_unit_group_quotients.py
+│   └── MB_0003_fano_orientations.py
 ├── results/
 │   ├── MB_0001_general_sweep.yaml
-│   └── MB_0002_unit_group_quotients.yaml
+│   ├── MB_0002_unit_group_quotients.yaml
+│   └── MB_0003_fano_orientations.yaml
 └── papers/
     └── density-correction/
-        └── paper.md                 # v3.1, current draft (MB_0001 only; MB_0002's proof is in proofs/, not a full paper)
+        └── paper.md                 # v3.1, current draft (MB_0001 only; MB_0002/MB_0003's proofs are in proofs/, not full papers)
 ```
 
 ## Status
 
 - **MB_0001 — Residue Conditioning Specifies a Primorial Density Correction.** mathematical: proved · computational: supported · provenance: audited · publication: draft. Source: `sources/mb_0001/persist.pdf` (audited; its reported constant of 24/25 did not hold, and was superseded by the general result C(m) = m/φ(m)). Statement: `statements/MB_0001_RESIDUE_CONDITIONING.yaml`. Verification: `tests/MB_0001_general_sweep.py`. Result: `results/MB_0001_general_sweep.yaml`. Paper: `papers/density-correction/paper.md`.
 - **MB_0002 — Unit-Group Structure Specifies Distinct Quotient Readings.** mathematical: proved · computational: supported · provenance: audited · publication: draft. Source: motivating prior discussion (RML/OpenWave group-structure context), independently re-derived rather than imported. Establishes (ℤ/30ℤ)ˣ ≅ C4×C2 and that its three order-2 subgroups give non-isomorphic quotients (C2×C2 from ⟨19⟩; C4 from ⟨11⟩ and ⟨29⟩). Statement: `statements/MB_0002_UNIT_GROUP_QUOTIENTS.yaml`. Proof: `proofs/MB_0002_UNIT_GROUP_QUOTIENTS.md`. Verification: `tests/MB_0002_unit_group_quotients.py`. Result: `results/MB_0002_unit_group_quotients.yaml`.
-- **MB_0003 and beyond** — not yet started. `sources/readingpoint/AUDIT.md` was checked as a candidate source and closed with no new statement found (its mod-30 claims are already covered by MB_0001 or are standard facts; see that file for the full audit). Candidates should go through the same source → statement → proof → verification → result pipeline before being numbered, one at a time, rather than being pre-assigned.
+- **MB_0003 — Fano-Line Orientations Specify a Unique Alternative Octonion Class.** mathematical: proved · computational: supported · provenance: audited · publication: draft. Source: `sources/mb_0003/baez-octonions.md` (excerpt of John C. Baez, "The Octonions," arXiv:math/0105155). Fixes the seven Fano lines given by cyclic shifts of {1,2,4} mod 7; of the 2⁷=128 independent line-orientation choices, exactly 16 yield an alternative algebra, all 16 isomorphic to the standard octonions via explicit sign-flip maps, the remaining 112 failing alternativity. Proof is fully analytic: expanding associator alternation directly gives a closed-form characterization (for each point p, the sum of orientation-bits over the four lines not containing p must be even), independently matching the sign-flip image's rank-4 count — the exhaustive 128-orientation test is independent verification of this proof, not an ingredient it depends on. This is the project's first specimen outside the mod-30/primorial family — nonassociative algebra, with a verification style (exhaustive combinatorial reconstruction + algebraic identity checking) distinct from MB_0001's numerical sweeps and MB_0002's exact enumeration. Statement: `statements/MB_0003_FANO_ORIENTATIONS.yaml`. Proof: `proofs/MB_0003_FANO_ORIENTATIONS.md`. Verification: `tests/MB_0003_fano_orientations.py`. Result: `results/MB_0003_fano_orientations.yaml`.
+- **MB_0004 and beyond** — not yet started. `sources/readingpoint/AUDIT.md` was checked as a candidate source and closed with no new statement found (its mod-30 claims are already covered by MB_0001 or are standard facts; see that file for the full audit). Candidates should go through the same source → statement → proof → verification → result pipeline before being numbered, one at a time, rather than being pre-assigned.
 
 ## Principle
 
