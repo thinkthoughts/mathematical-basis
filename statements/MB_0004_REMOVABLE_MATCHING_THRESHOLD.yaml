@@ -1,0 +1,104 @@
+statement:
+  id: MB_0004
+  title: "Minimum Degree Specifies K-Removable Matching Existence, With Two Necessary In-Domain Exceptions"
+  repository: mathematical-basis
+
+status:
+  # mathematical: audited (not "proved") -- a deliberate vocabulary
+  # extension, not a downgrade of what "proved" means elsewhere in this
+  # repository. MB_0001-3's "proved" means this project independently
+  # derived and verified the argument from first principles. Here, the
+  # source's own multi-page proof was checked for structural soundness
+  # and citation validity (see proofs/MB_0004_REMOVABLE_MATCHING_THRESHOLD.md),
+  # but Lemma 3.5 specifically was not independently re-derived and lies
+  # outside this statement's computational verification range (n<=6).
+  # "audited" names that state honestly rather than overloading "proved"
+  # to cover both. See analysis/MB_0004_VERIFICATION_SCOPE_NOTE.md.
+  mathematical: audited
+  computational: supported
+  provenance: audited
+  publication: draft
+
+source_provenance:
+  - source_ref: "sources/mb_0004/chu-2026-removable-matchings.md (excerpt of Hojin Chu, arXiv:2608.09394v1)"
+    role: canonical_reference
+    original_claim: "Theorem 1.3: every k-connected graph G with delta(G) >= max(k+1, 2m-2) has a k-removable matching of size m, except G = K_{2m-1} or (k,m)=(1,2) with G a cycle."
+    original_claim_status: independently_reverified
+    note: >
+      Used as the target claim this statement was checked against, not
+      imported on authority. Independently re-implemented and tested
+      computationally in tests/MB_0004_removable_matching_verification.py;
+      the source's own proof (Sections 2-4) is separately audited, not
+      re-derived from scratch, in proofs/MB_0004_REMOVABLE_MATCHING_THRESHOLD.md.
+
+specification:
+  domain:
+    graph_type: "finite, simple, undirected graph G"
+    parameters: "k, m positive integers"
+    connectivity_constraint: "G is k-connected (kappa(G) >= k)"
+    admissibility_condition: "delta(G) >= max(k+1, 2m-2)"
+
+  statement: >
+    Every finite simple graph G satisfying the domain constraints above
+    contains a k-removable matching of size m (a set of m pairwise
+    disjoint edges whose simultaneous removal leaves G k-connected) --
+    except for the two cases listed in theorem_exceptions below. The
+    minimum-degree threshold max(k+1, 2m-2) is sharp: strengthening it
+    to max(k+1, 2m-1) eliminates both exceptions and yields an
+    exception-free guarantee.
+
+  theorem_exceptions:
+    - id: EXC_001
+      description: "G is isomorphic to K_{2m-1}."
+      why_necessary: >
+        K_{2m-1} has only 2m-1 vertices, so it cannot contain a matching
+        of size m at all (a matching of size m requires 2m vertices),
+        independent of removability. Verified computationally: K_{2m-1}
+        satisfies the domain's connectivity and degree constraints for
+        every k up to 2m-3 (delta(K_{2m-1}) = kappa(K_{2m-1}) = 2m-2 =
+        max(k+1,2m-2) whenever k <= 2m-3), so this exception sits INSIDE
+        the domain the leading constraints define, not outside it -- a
+        different role from excluded_generalizations (see leading_constraints).
+    - id: EXC_002
+      description: "(k, m) = (1, 2) and G is a cycle."
+      why_necessary: >
+        A cycle has a matching of size 2, but no 1-removable one: removing
+        any 2 disjoint edges from a cycle disconnects it (drops
+        connectivity below 1). This is a genuine removability failure,
+        distinct from EXC_001's non-existence failure. Verified
+        computationally as necessary (triggered 75 times across the
+        tested range) and confirmed no other (k,m) pair produces an
+        analogous cycle-type exception in the tested range.
+
+  leading_constraints:
+    - "Both named exceptions are necessary, not merely sufficient conditions for exclusion -- confirmed computationally, not just asserted from the source (see results)."
+    - "The admissibility condition delta(G) >= max(k+1, 2m-2) is sharp: reducing it by 1 admits graphs (beyond the two named exceptions) with no k-removable matching of size m, confirmed computationally for a representative range of (n,k,m)."
+    - "EXC_001 is structurally different from EXC_002: EXC_001 is a hypothesis-satisfying object that fails the conclusion for a reason (matching non-existence) independent of the removability question the theorem is actually about; EXC_002 is a hypothesis-satisfying object that fails specifically on removability."
+
+  excluded_generalizations:
+    - "Any claim about which specific k-removable matching of size m exists, or how many exist -- the theorem is purely existential."
+    - "Any claim about edge-connectivity (as opposed to vertex-connectivity) analogues; a related edge-connectivity result exists in the literature (Clay and Jordan, cited in the source) but is a separate result, not covered here."
+    - "Any claim about infinite graphs, multigraphs, or graphs with loops -- the domain is restricted to finite simple graphs throughout."
+    - "Any claim that the two named exceptions are the only obstructions for degree thresholds below max(k+1, 2m-2) -- the theorem's sharpness claim concerns the specific threshold max(k+1,2m-2) to max(k+1,2m-1) transition, not a full classification of what happens at lower thresholds."
+
+verification:
+  proof_ref: proofs/MB_0004_REMOVABLE_MATCHING_THRESHOLD.md
+  executable_ref: tests/MB_0004_removable_matching_verification.py
+
+result:
+  result_ref: results/MB_0004_removable_matching_verification.yaml
+  claim_status: supported
+  summary: >
+    Exhaustive check over all graphs on n=3..6 vertices, all valid (k,m)
+    pairs: 28,802 hypothesis-satisfying instances, zero counterexamples.
+    Both named exceptions independently confirmed necessary (K_{2m-1}
+    triggered 4 times, cycle exception triggered 75 times). Sharpness
+    spot-checked: 28 confirming examples found where the threshold-minus-1
+    degree condition admits a graph with no valid matching, across a
+    representative range of (n,k,m). See analysis/MB_0004_VERIFICATION_SCOPE_NOTE.md
+    for a documented verification-scope error (an n<2m filter that
+    silently excluded the K_{2m-1} exception from the first test run)
+    found and corrected during this work.
+
+footer:
+  principle: "Admissible generalizations trail leading specifications."
