@@ -33,8 +33,13 @@ mathematical-basis/
 ├── statements/
 │   ├── MB_0001_RESIDUE_CONDITIONING.yaml
 │   └── MB_0002_UNIT_GROUP_QUOTIENTS.yaml
-├── proofs/
-│   └── MB_0002_UNIT_GROUP_QUOTIENTS.md
+sources/
+├── mb_0001/
+│   ├── README.md
+│   └── persist.pdf
+└── readingpoint/
+    ├── README.md
+    └── AUDIT.md
 ├── tests/
 │   ├── MB_0001_general_sweep.py
 │   └── MB_0002_unit_group_quotients.py
