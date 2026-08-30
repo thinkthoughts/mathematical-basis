@@ -1,0 +1,247 @@
+# results/MB_0004_removable_matching_verification.yaml
+#
+# Actual output of running tests/MB_0004_removable_matching_verification.py,
+# not a paraphrase of the expected output.
+
+run_metadata:
+  executable_ref: tests/MB_0004_removable_matching_verification.py
+  executable_sha256: 027e22672d9232c8aa7df46d37c248b3e967802d6400cb1bb68e477a8f2c0270
+  run_timestamp_utc: "2026-08-30T12:25:41Z"
+  environment:
+    python: "3.12.3"
+    networkx: "3.6.1"
+  commit_hash: null   # fill in with `git rev-parse HEAD` at the commit where this result was produced
+
+statement_ref: statements/MB_0004_REMOVABLE_MATCHING_THRESHOLD.yaml
+
+output:
+  {
+    "main_theorem_check": {
+      "n_range_tested": [
+        3,
+        6
+      ],
+      "instances_checked": 28802,
+      "instances_consistent": 28802,
+      "counterexamples": [],
+      "K2m1_exception_triggered_count": 4,
+      "cycle_exception_triggered_count": 75
+    },
+    "sharpness_check": {
+      "sharpness_examples_found": 28,
+      "examples": [
+        {
+          "n": 4,
+          "k": 1,
+          "m": 1,
+          "delta": 1,
+          "threshold": 2
+        },
+        {
+          "n": 4,
+          "k": 1,
+          "m": 2,
+          "delta": 1,
+          "threshold": 2
+        },
+        {
+          "n": 4,
+          "k": 2,
+          "m": 1,
+          "delta": 2,
+          "threshold": 3
+        },
+        {
+          "n": 4,
+          "k": 2,
+          "m": 2,
+          "delta": 2,
+          "threshold": 3
+        },
+        {
+          "n": 4,
+          "k": 3,
+          "m": 1,
+          "delta": 3,
+          "threshold": 4
+        },
+        {
+          "n": 4,
+          "k": 3,
+          "m": 2,
+          "delta": 3,
+          "threshold": 4
+        },
+        {
+          "n": 5,
+          "k": 1,
+          "m": 1,
+          "delta": 1,
+          "threshold": 2
+        },
+        {
+          "n": 5,
+          "k": 1,
+          "m": 2,
+          "delta": 1,
+          "threshold": 2
+        },
+        {
+          "n": 5,
+          "k": 2,
+          "m": 1,
+          "delta": 2,
+          "threshold": 3
+        },
+        {
+          "n": 5,
+          "k": 2,
+          "m": 2,
+          "delta": 2,
+          "threshold": 3
+        },
+        {
+          "n": 5,
+          "k": 3,
+          "m": 1,
+          "delta": 3,
+          "threshold": 4
+        },
+        {
+          "n": 5,
+          "k": 3,
+          "m": 2,
+          "delta": 3,
+          "threshold": 4
+        },
+        {
+          "n": 5,
+          "k": 4,
+          "m": 1,
+          "delta": 4,
+          "threshold": 5
+        },
+        {
+          "n": 5,
+          "k": 4,
+          "m": 2,
+          "delta": 4,
+          "threshold": 5
+        },
+        {
+          "n": 6,
+          "k": 1,
+          "m": 1,
+          "delta": 1,
+          "threshold": 2
+        },
+        {
+          "n": 6,
+          "k": 1,
+          "m": 2,
+          "delta": 1,
+          "threshold": 2
+        },
+        {
+          "n": 6,
+          "k": 2,
+          "m": 1,
+          "delta": 2,
+          "threshold": 3
+        },
+        {
+          "n": 6,
+          "k": 2,
+          "m": 2,
+          "delta": 2,
+          "threshold": 3
+        },
+        {
+          "n": 6,
+          "k": 2,
+          "m": 3,
+          "delta": 3,
+          "threshold": 4
+        },
+        {
+          "n": 6,
+          "k": 3,
+          "m": 1,
+          "delta": 3,
+          "threshold": 4
+        },
+        {
+          "n": 6,
+          "k": 3,
+          "m": 2,
+          "delta": 3,
+          "threshold": 4
+        },
+        {
+          "n": 6,
+          "k": 3,
+          "m": 3,
+          "delta": 3,
+          "threshold": 4
+        },
+        {
+          "n": 6,
+          "k": 4,
+          "m": 1,
+          "delta": 4,
+          "threshold": 5
+        },
+        {
+          "n": 6,
+          "k": 4,
+          "m": 2,
+          "delta": 4,
+          "threshold": 5
+        },
+        {
+          "n": 6,
+          "k": 4,
+          "m": 3,
+          "delta": 4,
+          "threshold": 5
+        },
+        {
+          "n": 6,
+          "k": 5,
+          "m": 1,
+          "delta": 5,
+          "threshold": 6
+        },
+        {
+          "n": 6,
+          "k": 5,
+          "m": 2,
+          "delta": 5,
+          "threshold": 6
+        },
+        {
+          "n": 6,
+          "k": 5,
+          "m": 3,
+          "delta": 5,
+          "threshold": 6
+        }
+      ]
+    },
+    "summary": {
+      "claim_status": "supported",
+      "note": "Exhaustive only to n=6; Lemma 3.5's regime (n>=7) in the source proof is NOT covered by this check -- see proofs/MB_0004_REMOVABLE_MATCHING_THRESHOLD.md."
+    }
+  }
+
+summary_for_humans:
+  claim_status: supported
+  instances_checked: 28802
+  counterexamples_found: 0
+  K2m1_exception_triggered: 4
+  cycle_exception_triggered: 75
+  sharpness_examples_found: 28
+  scope_limit: >
+    Exhaustive only to n=6. Lemma 3.5's regime in the source proof
+    (n>=7) is not covered -- see analysis/MB_0004_VERIFICATION_SCOPE_NOTE.md
+    and proofs/MB_0004_REMOVABLE_MATCHING_THRESHOLD.md.
