@@ -9,9 +9,10 @@ Checks, for all 128 orientations of the fixed seven Fano lines
   1. The base orientation (all lines as listed) reproduces Baez's
      canonical octonion multiplication table (arXiv:math/0105155,
      Table 1) exactly.
-  2. Exactly 16 of the 128 orientations are alternative (Artin's
-     associator-alternation criterion, checked over all 512 basis
-     triples per orientation).
+  2. Exactly 16 of the 128 orientations are alternative (Artin's full
+     associator-alternation criterion: both [a,b,c]=-[b,a,c] and
+     [a,b,c]=-[a,c,b], checked over all 512 basis triples per
+     orientation for each identity).
   3. All 16 alternative orientations are also norm-multiplicative.
   4. All 16 alternative orientations are isomorphic to the reference
      (base) orientation via an explicit sign-flip map on e_1..e_7.
@@ -63,13 +64,22 @@ def basis(k):
 
 
 def check_alternative(C):
+    """Full alternativity per Artin's theorem: checks BOTH
+    [a,b,c] = -[b,a,c] (swap first two arguments) and
+    [a,b,c] = -[a,c,b] (swap last two arguments). Baez's paper notes
+    any two of the three transposition-antisymmetries imply the third,
+    so checking both of these is sufficient for full alternativity,
+    not merely the first-swap identity alone."""
     for i in range(8):
         for j in range(8):
             for k in range(8):
                 a, b, c = basis(i), basis(j), basis(k)
-                lhs = mult(C, mult(C, a, b), c) - mult(C, a, mult(C, b, c))
-                rhs = mult(C, mult(C, b, a), c) - mult(C, b, mult(C, a, c))
-                if not np.allclose(lhs, -rhs):
+                assoc_abc = mult(C, mult(C, a, b), c) - mult(C, a, mult(C, b, c))
+                assoc_bac = mult(C, mult(C, b, a), c) - mult(C, b, mult(C, a, c))
+                assoc_acb = mult(C, mult(C, a, c), b) - mult(C, a, mult(C, c, b))
+                if not np.allclose(assoc_abc, -assoc_bac):
+                    return False
+                if not np.allclose(assoc_abc, -assoc_acb):
                     return False
     return True
 
