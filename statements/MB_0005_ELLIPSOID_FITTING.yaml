@@ -1,0 +1,156 @@
+statement:
+  id: MB_0005
+  title: "Coordinate Distribution Specifies the Ellipsoid-Fitting Phase Boundary"
+  repository: mathematical-basis
+
+status:
+  # mathematical: audited (not "proved") from the first draft -- established in
+  # the pre-formalization source audit (analysis/MB_0005_SOURCE_AUDIT.md) before
+  # any artifact was written, not discovered mid-build as in MB_0004.
+  # The proof (79 pages, CGMT + self-concordant barriers + random-matrix
+  # anti-concentration) is beyond this project's re-derivation capacity;
+  # the source's proof structure is audited, and the finite-dimensional
+  # computational realization is independently validated.
+  # "proved" is reserved for arguments this project derived from first principles.
+  mathematical: audited
+  computational: supported
+  provenance: audited
+  publication: draft
+
+source_provenance:
+  - source_ref: "sources/mb_0005/koehler-sohn-2026-ellipsoid-fitting.md"
+    role: canonical_reference
+    original_claim: "Theorem 1.2: there exists an explicit threshold alpha_star(kappa) such that below it an ellipsoid fit exists with high probability, above it no PSD fit exists with high probability, and the optimal squared fitting error converges to e_star(alpha,kappa) in the UNSAT regime."
+    original_claim_status: independently_reverified
+    note: >
+      Koehler and Sohn is chosen as the canonical source among at least
+      three contemporaneous independent resolutions of the Gaussian
+      ellipsoid fitting conjecture (arXiv:2608.27372, submitted Aug 27
+      2026). The paper itself acknowledges simultaneous independent work:
+      de la Cerda, Potechin, Tulsiani, and Xu (arXiv:2608.12415) and
+      Misiakiewicz and Wen (arXiv:2608.10184), both posted in the same
+      week. This source is canonical for this MB statement but not
+      unique as a contemporary proof.
+
+specification:
+  domain:
+    vectors: "x_1,...,x_n in R^d, i.i.d., independent coordinates"
+    coordinate_conditions:
+      - "E[x_{1j}] = 0 (mean zero)"
+      - "E[x_{1j}^2] = 1 (variance one)"
+      - "E[x_{1j}^4] = kappa, where kappa > 1 (nondegeneracy; kappa=1 collapses to {+-1}^d which always fits)"
+      - "sup_j ||x_{1j}||_{psi_2} <= K_x (uniformly subgaussian)"
+    regime: "n, d -> infinity with n/d^2 -> alpha in (0, infinity)"
+
+  statement: >
+    There exists an explicit phase boundary alpha_star(kappa) (defined in
+    specification_boundary below) such that:
+    (i) If alpha < alpha_star(kappa), then with probability tending to 1,
+        there exists R ≻ 0 (positive definite) with x_i^T R x_i = 1 for
+        all i, and such R can be chosen well-conditioned
+        (lambda_max(R)/lambda_min(R) = O(1)).
+    (ii) If alpha > alpha_star(kappa), then with probability tending to 1,
+         no R >= 0 satisfies x_i^T R x_i = 1 for all i. Moreover the
+         optimal squared fitting error Gamma_X converges in probability
+         to e_star(alpha, kappa) > 0. Exact fitting is impossible.
+
+  specification_boundary:
+    # NEW FIELD -- not theorem_exceptions (MB_0004's in-domain carve-outs),
+    # not leading_constraints (positive conditions on the object),
+    # not excluded_generalizations (untested extensions beyond scope).
+    # This is a continuous function of the coordinate distribution's fourth
+    # moment that partitions the (alpha, kappa) parameter space into SAT and
+    # UNSAT regimes. It has its own definition, explicit formula, proven
+    # properties, and organizes the proof's structure. See
+    # analysis/MB_0005_SOURCE_AUDIT.md for the pre-formalization assessment
+    # of whether this collapses into the claim or is genuinely separate.
+    parameter: "kappa = E[x_{1j}^4], the common fourth moment of the coordinate distribution"
+    boundary_object: "alpha_star(kappa)"
+    definition: >
+      Let nu be the rescaled semicircle law with support [-sqrt(2), sqrt(2)],
+      dnu(x) = (1/pi) * sqrt(2-x^2) * 1_{|x|<=sqrt(2)} dx.
+      For omega < sqrt(2), let s(omega) = integral (x-omega)_+^2 dnu(x) and
+      m(omega) = integral (x-omega)_+ dnu(x).
+      Set E_kappa(omega) = s(omega) + (kappa-3)/2 * m(omega)^2.
+      Let omega_kappa in [-sqrt(2), sqrt(2)] be the unique solution of
+          omega_kappa = (kappa-3)/2 * m(omega_kappa).
+      Then alpha_star(kappa) = E_kappa(omega_kappa).
+    gaussian_case: "kappa=3 gives omega_kappa=0, alpha_star(3) = s(0) = 1/4 (resolves the Gaussian ellipsoid fitting conjecture)"
+    properties:
+      - "alpha_star(kappa) is nonincreasing in kappa (more heavy-tailed coordinates -> harder to fit -> lower threshold)"
+      - "alpha_star(kappa) -> 1/2 as kappa -> 1+ (approaches the PSD-ignored dimension-count threshold)"
+      - "The phase transition at alpha = alpha_star(kappa) is second-order (continuous first derivative, jump in second derivative)"
+      - "alpha_star(kappa) admits a variational representation: alpha_star(kappa) = sup_{f in L^2(nu), f>=0, int f dnu=1} (int x f(x) dnu(x))^2 / (int f(x)^2 dnu(x) + (kappa-3)/2)"
+    universality: >
+      alpha_star(kappa) depends on the coordinate distribution ONLY through
+      kappa = E[x_{1j}^4]. Two distributions with the same fourth moment
+      have the same phase boundary, regardless of all higher moments.
+      (This is the fourth-moment universality result of Theorem 1.2.)
+
+  asymptotic_vs_computational_distinction:
+    # Source-native distinction, stated explicitly in Appendix A.5:
+    # the theorem is an asymptotic (d -> infinity) statement; finite-d
+    # SDP computations produce readings relative to the asymptotic specification,
+    # not verifications of it. MB_0004's scope-note finding (execution success
+    # != claim coverage) applies here differently: every computational run
+    # at finite d=40 is, by construction, a reading of the asymptotic theorem,
+    # not a test of whether the theorem holds.
+    asymptotic_theorem: "Theorem 1.2 -- holds with probability tending to 1 as n,d -> infinity"
+    finite_computation: "SDP feasibility at chosen (d,n) -- a reading relative to the asymptotic boundary, validated by checking the quadratic constraints and PSD condition directly (not just solver status)"
+    stated_by_source: >
+      Appendix A.5 explicitly describes a binary search in n at d=40 to
+      locate the transition, treating the empirical transition location as
+      evidence for the theoretical alpha_star(kappa), not as a verification
+      of Theorem 1.2. The paper separates Figure 1 (numerical experiment)
+      from the theorem statement throughout.
+
+  leading_constraints:
+    - "kappa > 1 is required; kappa=1 forces all coordinates to {+-1} and then S=Id/d fits every sample regardless of n -- the nondegeneracy condition is load-bearing, not cosmetic."
+    - "Coordinate independence is required for the SAT direction (Theorem 1.2-(i)); the UNSAT direction (Theorem 1.7) extends to weakly dependent coordinates under approximate tensorization of variance."
+    - "Exact fitting (Theorem 1.2-(i)) is more delicate than approximate fitting: isotropy + subgaussianity + matching fourth moments alone do NOT imply exact fitting -- a specific counterexample exists (Remark 1.8 in the source). The difference is anti-concentration vs. concentration, a distinction the source makes explicit."
+    - "The asymptotic specification alpha_star(kappa) and the finite-d computational reading are distinct objects. A computational run at fixed d is a reading relative to the asymptotic specification, not a verification of Theorem 1.2."
+
+  excluded_generalizations:
+    - "Any claim about computationally efficient algorithms for finding the ellipsoid fit (the theorem is existential/probabilistic; algorithmic results are a separate open problem referenced in Section 1.2)."
+    - "Any claim that kappa alone determines the distribution law (only the phase boundary alpha_star(kappa) is universal in kappa; higher moments matter for other properties)."
+    - "Extension to vectors with dependent coordinates in the SAT direction -- this is explicitly excluded from Theorem 1.2-(i) with a counterexample (Remark 1.8)."
+    - "Any claim about the UNSAT optimal error formula e_star(alpha, kappa) at exactly alpha = alpha_star(kappa); the formula is for the strict UNSAT regime alpha > alpha_star(kappa), with the transition behavior given separately in Remark 1.6."
+
+  specification_boundary_vs_mb0004_theorem_exceptions:
+    # Explicit architectural note for the SG-3 question -- why this field is
+    # not theorem_exceptions, and what the structural difference is:
+    role_difference: >
+      MB_0004's theorem_exceptions (K_{2m-1} and the (k,m)=(1,2) cycle)
+      are specific hypothesis-satisfying objects that must be carved OUT
+      of the conclusion's scope. They are finite, enumerable, and their
+      exclusion is stated as "unless G = K_{2m-1} or G is a cycle."
+      MB_0005's specification_boundary is a continuous function alpha_star(kappa)
+      that PARTITIONS the parameter space into SAT and UNSAT regimes.
+      It is not an exception to the claim -- it IS the claim's organizing
+      structure. Both SAT and UNSAT conclusions are correct; alpha_star(kappa)
+      determines which one applies. No object is carved out; instead, a
+      function determines which of two possible conclusions holds.
+    sg3_implication: >
+      If specification_boundary generalizes to future specimens -- other
+      theorems with a parameter-dependent phase boundary that organizes
+      rather than restricts the claim -- then SG-3's constraint/boundary
+      pairing should be extended to a three-way distinction:
+      domain constraints (what the object must satisfy) /
+      specification boundary (what partitions the claim's outcomes) /
+      excluded generalizations (what the claim does not cover).
+      If it doesn't generalize, specification_boundary stays as a
+      domain-specific SG-7 extension for this specimen only.
+      This is the SG-3 question MB_0005 was chosen to pressure-test;
+      do not resolve it here.
+
+verification:
+  proof_ref: proofs/MB_0005_ELLIPSOID_FITTING.md
+  executable_ref: tests/MB_0005_ellipsoid_fitting_verification.py
+
+result:
+  result_ref: results/MB_0005_ellipsoid_fitting_verification.yaml
+  claim_status: pending   # will be updated once tests/MB_0005 is built and run
+  summary: pending
+
+footer:
+  principle: "Admissible generalizations trail leading specifications."
