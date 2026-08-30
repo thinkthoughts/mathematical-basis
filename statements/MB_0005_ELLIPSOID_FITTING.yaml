@@ -157,8 +157,11 @@ verification:
 
 result:
   result_ref: results/MB_0005_ellipsoid_fitting_verification.yaml
-  claim_status: pending   # will be updated once tests/MB_0005 is built and run
-  summary: pending
+  claim_status: supported
+  summary: >
+    Finite-dimensional Gaussian SDP readings at d=40 exhibit a
+    transition near alpha_star(3)=1/4, with mixed readings near the
+    boundary and uniformly UNSAT sampled readings above it.
 
 footer:
   principle: "Admissible generalizations trail leading specifications."
