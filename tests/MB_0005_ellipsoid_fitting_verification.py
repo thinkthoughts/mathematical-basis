@@ -71,7 +71,7 @@ else:
     ALPHAS = [0.10, 0.15, 0.20, 0.225, 0.24, 0.25, 0.26, 0.275, 0.30, 0.35, 0.40]
     TRIALS_PER_ALPHA = 8
 
-SOLVER_ORDER = ("CLARABEL", "SCS")
+SOLVER_ORDER = ("CLARABEL",)
 
 
 @dataclass
