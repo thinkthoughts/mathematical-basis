@@ -1,0 +1,193 @@
+# results/MB_0003_fano_orientations.yaml
+#
+# Actual output of running tests/MB_0003_fano_orientations.py, not a
+# paraphrase of the expected output. This run uses the strengthened
+# check_alternative (both associator-antisymmetry swaps, not just
+# the first).
+
+run_metadata:
+  executable_ref: tests/MB_0003_fano_orientations.py
+  executable_sha256: ddf8c95c38c552a9a0ffddce8ba8f9d08cf2dbc160d3f6ef8d3d1d3658029b5a
+  run_timestamp_utc: "2026-08-30T00:50:23Z"
+  environment:
+    python: "3.12.3"
+    numpy: "2.4.4"
+  commit_hash: null   # fill in with `git rev-parse HEAD` at the commit where this result was produced
+
+statement_ref: statements/MB_0003_FANO_ORIENTATIONS.yaml
+
+output:
+  {
+    "alternative_orientations": [
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        1,
+        0,
+        1,
+        1
+      ],
+      [
+        0,
+        0,
+        1,
+        0,
+        1,
+        1,
+        0
+      ],
+      [
+        0,
+        0,
+        1,
+        1,
+        1,
+        0,
+        1
+      ],
+      [
+        0,
+        1,
+        0,
+        0,
+        1,
+        1,
+        1
+      ],
+      [
+        0,
+        1,
+        0,
+        1,
+        1,
+        0,
+        0
+      ],
+      [
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        1
+      ],
+      [
+        0,
+        1,
+        1,
+        1,
+        0,
+        1,
+        0
+      ],
+      [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        1
+      ],
+      [
+        1,
+        0,
+        0,
+        1,
+        1,
+        1,
+        0
+      ],
+      [
+        1,
+        0,
+        1,
+        0,
+        0,
+        1,
+        1
+      ],
+      [
+        1,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0
+      ],
+      [
+        1,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0
+      ],
+      [
+        1,
+        1,
+        0,
+        1,
+        0,
+        0,
+        1
+      ],
+      [
+        1,
+        1,
+        1,
+        0,
+        1,
+        0,
+        0
+      ],
+      [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ]
+    ],
+    "summary": {
+      "baez_table_reproduced_exactly": true,
+      "mismatches_vs_baez": 0,
+      "total_orientations": 128,
+      "alternative_count": 16,
+      "alternative_count_expected": 16,
+      "all_alternative_are_norm_multiplicative": true,
+      "all_alternative_are_isomorphic_to_reference": true,
+      "F2_incidence_matrix_rank": 4,
+      "F2_incidence_matrix_rank_expected": 4,
+      "image_size": 16,
+      "image_size_expected": 16,
+      "image_equals_alternative_set": true,
+      "claim_status": "supported"
+    }
+  }
+
+summary_for_humans:
+  claim_status: supported
+  baez_table_reproduced_exactly: True
+  alternative_count: 16
+  F2_incidence_matrix_rank: 4
+  image_equals_alternative_set: True
+  note: >
+    Reran under the strengthened check (both associator-antisymmetry
+    swaps); result unchanged from the earlier single-swap run --
+    16/128, all checks passing.
