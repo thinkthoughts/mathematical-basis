@@ -1,0 +1,28 @@
+# Proof Audit: MB_0004 — Minimum Degree Specifies K-Removable Matching Existence
+
+Statement under audit: `statements/MB_0004_REMOVABLE_MATCHING_THRESHOLD.yaml`. Source: `sources/mb_0004/chu-2026-removable-matchings.md`.
+
+## What kind of "proof" artifact this is
+
+This is a **structural audit** of the source's own proof (Sections 2–4 of arXiv:2608.09394), not an independent from-scratch re-derivation. MB_0001–3's proofs were derived directly by this project; this source's proof is a multi-page casework argument (Theorem 2.2's forest-structure analysis, two dense-graph lemmas, and a six-claim reduction in the main proof) that would take substantially more effort to fully re-derive than to audit for logical soundness. This audit checks: (a) that each external citation is real and correctly used, (b) that the proof's overall strategy is sound, (c) that no step silently relies on an unproven or merely-computational claim, and (d) explicitly states what was NOT independently re-verified.
+
+## External citations, checked
+
+- **Halin's theorem (Theorem 1.1)** — a real, classical result (Halin, J. Combinatorial Theory 7 (1969), cited correctly). Used as the k=1-edge base case the paper extends.
+- **Mader's theorem (Theorem 2.1)** — cited from Mader's 1972 paper via a survey reference (Kriesell). Used to derive that G[U] must be a forest (a cycle of k-essential edges would contain a degree-k vertex, contradicting the degree hypothesis). This is the load-bearing external result for Theorem 2.2's proof; the citation is specific and checkable against the stated source.
+- **Tutte–Berge formula (Theorem 3.2)** — a standard, well-established result in matching theory (Berge 1958, correctly cited), used in Lemma 3.5's n∈{7,8} case analysis.
+- **Dirac's theorem** (Hamiltonian cycle from minimum degree ≥ n/2) — a classical, extremely well-known result, used in Lemma 3.5's n≥9 case. Correctly applied: the construction adds a universal vertex to raise the degree bound to the Dirac threshold before removing it.
+- **Lemma 3.1 (k=1 case)** — cited from a companion paper (Li, Zhou, Fujita, Mao, arXiv:2605.24035), not reproved here. This is an external dependency the source's own Theorem 1.3 proof relies on for the k=1 base case; this audit did not independently verify that companion result, only confirmed the citation is specific and the paper is a real, dated preprint.
+
+## Proof strategy, audited for soundness
+
+The main proof (Theorem 1.3) proceeds by contradiction: assume a minimal counterexample G, take a maximum k-removable matching M chosen to minimize the number of components of G[U] (U = uncovered vertices), and derive an increasingly restrictive sequence of structural claims (4.1–4.6) that force G[U] to be a single short path (P2 or P3), which is then shown to contradict the dense-graph lemmas (3.3, 3.5). This is a standard and sound proof technique (extremal counterexample + structural reduction); the logical chain from Claim 4.1 through 4.6 to the final contradiction was read in full and each claim's proof references only previously-established results (Theorem 2.1, Theorem 2.2, and earlier claims in the same sequence) — no circular dependencies or forward references were found.
+
+## What this audit explicitly did NOT independently re-verify
+
+- **The full casework inside Theorem 2.2's proof and Claims 4.1–4.6.** These were read and checked for logical flow (each inequality's justification was traced to a cited premise or earlier claim), but the individual algebraic steps within the casework (e.g., the degree-counting arguments in Claim 4.5) were not independently re-derived line by line. This is a materially lighter check than MB_0001–3's proofs, which this project derived and verified from first principles.
+- **Lemma 3.5, specifically.** The source's own AI-use declaration states an AI tool was used to "generate an initial proof of Lemma 3.5." This audit did not give Lemma 3.5 any special additional scrutiny beyond the rest of the proof, but it's worth naming directly: Lemma 3.5 covers graphs with δ(G) ≥ n−3 and n ≥ 7, and this is exactly the regime the computational verification (`tests/MB_0004_removable_matching_verification.py`) does **not** cover — the executable check is exhaustive only up to n=6, for tractability reasons stated in `results/MB_0004_removable_matching_verification.yaml`. This is a real gap, not a minor caveat: the one part of the source's proof with disclosed AI assistance is also the one part this project's independent computational check provides no coverage of. Closing this gap would mean either extending the computational check to n=7–9 (the exact range Lemma 3.5's own case split addresses) with a more efficient matching-enumeration strategy than brute force, or a closer line-by-line audit of Lemma 3.5's argument specifically.
+
+## Conclusion
+
+The proof's overall structure is sound and its external citations are real and correctly used. The main gap in this audit's coverage is Lemma 3.5 — both the part of the source proof with disclosed AI assistance and the part outside this project's computational verification range. `status.mathematical: audited` in the statement YAML reflects this precisely: a structural audit plus independent computational confirmation for n=3–6, not independent line-by-line re-derivation of every step. This statement deliberately does not use `proved` — MB_0001–3 reserve that word for arguments this project derived and verified from first principles itself, which this audit is not. See `analysis/MB_0004_VERIFICATION_SCOPE_NOTE.md` for the related finding that execution success and claim coverage are not the same thing, discovered in this specimen's own first verification attempt.
