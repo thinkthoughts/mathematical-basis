@@ -21,7 +21,7 @@ source_provenance:
   - source_ref: "sources/mb_0005/koehler-sohn-2026-ellipsoid-fitting.md"
     role: canonical_reference
     original_claim: "Theorem 1.2: there exists an explicit threshold alpha_star(kappa) such that below it an ellipsoid fit exists with high probability, above it no PSD fit exists with high probability, and the optimal squared fitting error converges to e_star(alpha,kappa) in the UNSAT regime."
-    original_claim_status: independently_reverified
+    original_claim_status: audited
     note: >
       Koehler and Sohn is chosen as the canonical source among at least
       three contemporaneous independent resolutions of the Gaussian
@@ -65,7 +65,15 @@ specification:
     # analysis/MB_0005_SOURCE_AUDIT.md for the pre-formalization assessment
     # of whether this collapses into the claim or is genuinely separate.
     parameter: "kappa = E[x_{1j}^4], the common fourth moment of the coordinate distribution"
-    boundary_object: "alpha_star(kappa)"
+    regions:
+      sat: "alpha < alpha_star(kappa)"
+      boundary: "alpha = alpha_star(kappa)"
+      unsat: "alpha > alpha_star(kappa)"
+      # The boundary region carries no conclusion -- the theorem is stated only
+      # for strict inequalities. Remark 1.6 characterizes the transition behavior
+      # (second-order, continuous first derivative) but makes no claim about
+      # exact-boundary instances. This is the structurally important case:
+      # the boundary exists, is named, and has no conclusion attached to it.
     definition: >
       Let nu be the rescaled semicircle law with support [-sqrt(2), sqrt(2)],
       dnu(x) = (1/pi) * sqrt(2-x^2) * 1_{|x|<=sqrt(2)} dx.
@@ -77,7 +85,7 @@ specification:
       Then alpha_star(kappa) = E_kappa(omega_kappa).
     gaussian_case: "kappa=3 gives omega_kappa=0, alpha_star(3) = s(0) = 1/4 (resolves the Gaussian ellipsoid fitting conjecture)"
     properties:
-      - "alpha_star(kappa) is nonincreasing in kappa (more heavy-tailed coordinates -> harder to fit -> lower threshold)"
+      - "alpha_star(kappa) is nonincreasing in kappa"
       - "alpha_star(kappa) -> 1/2 as kappa -> 1+ (approaches the PSD-ignored dimension-count threshold)"
       - "The phase transition at alpha = alpha_star(kappa) is second-order (continuous first derivative, jump in second derivative)"
       - "alpha_star(kappa) admits a variational representation: alpha_star(kappa) = sup_{f in L^2(nu), f>=0, int f dnu=1} (int x f(x) dnu(x))^2 / (int f(x)^2 dnu(x) + (kappa-3)/2)"
