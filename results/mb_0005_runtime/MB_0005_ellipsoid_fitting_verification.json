@@ -16,67 +16,133 @@
     "psd_tolerance": 1e-06
   },
   "run": {
-    "mode": "quick",
+    "mode": "paper",
     "seed": 260827372,
-    "trials_per_alpha": 2,
+    "trials_per_alpha": 8,
     "alphas": [
+      0.1,
+      0.15,
       0.2,
+      0.225,
       0.24,
       0.25,
       0.26,
-      0.3
+      0.275,
+      0.3,
+      0.35,
+      0.4
     ]
   },
   "summary": [
     {
-      "alpha_requested": 0.2,
-      "n": 320,
-      "trials": 2,
-      "SAT": 2,
+      "alpha_requested": 0.1,
+      "n": 160,
+      "trials": 8,
+      "SAT": 8,
       "UNSAT": 0,
       "UNRESOLVED": 0,
-      "resolved": 2,
+      "resolved": 8,
+      "fraction_sat_among_resolved": 1.0
+    },
+    {
+      "alpha_requested": 0.15,
+      "n": 240,
+      "trials": 8,
+      "SAT": 8,
+      "UNSAT": 0,
+      "UNRESOLVED": 0,
+      "resolved": 8,
+      "fraction_sat_among_resolved": 1.0
+    },
+    {
+      "alpha_requested": 0.2,
+      "n": 320,
+      "trials": 8,
+      "SAT": 8,
+      "UNSAT": 0,
+      "UNRESOLVED": 0,
+      "resolved": 8,
+      "fraction_sat_among_resolved": 1.0
+    },
+    {
+      "alpha_requested": 0.225,
+      "n": 360,
+      "trials": 8,
+      "SAT": 8,
+      "UNSAT": 0,
+      "UNRESOLVED": 0,
+      "resolved": 8,
       "fraction_sat_among_resolved": 1.0
     },
     {
       "alpha_requested": 0.24,
       "n": 384,
-      "trials": 2,
-      "SAT": 2,
-      "UNSAT": 0,
+      "trials": 8,
+      "SAT": 7,
+      "UNSAT": 1,
       "UNRESOLVED": 0,
-      "resolved": 2,
-      "fraction_sat_among_resolved": 1.0
+      "resolved": 8,
+      "fraction_sat_among_resolved": 0.875
     },
     {
       "alpha_requested": 0.25,
       "n": 400,
-      "trials": 2,
-      "SAT": 2,
-      "UNSAT": 0,
+      "trials": 8,
+      "SAT": 3,
+      "UNSAT": 5,
       "UNRESOLVED": 0,
-      "resolved": 2,
-      "fraction_sat_among_resolved": 1.0
+      "resolved": 8,
+      "fraction_sat_among_resolved": 0.375
     },
     {
       "alpha_requested": 0.26,
       "n": 416,
-      "trials": 2,
+      "trials": 8,
       "SAT": 0,
-      "UNSAT": 0,
-      "UNRESOLVED": 2,
-      "resolved": 0,
-      "fraction_sat_among_resolved": null
+      "UNSAT": 8,
+      "UNRESOLVED": 0,
+      "resolved": 8,
+      "fraction_sat_among_resolved": 0.0
+    },
+    {
+      "alpha_requested": 0.275,
+      "n": 440,
+      "trials": 8,
+      "SAT": 0,
+      "UNSAT": 8,
+      "UNRESOLVED": 0,
+      "resolved": 8,
+      "fraction_sat_among_resolved": 0.0
     },
     {
       "alpha_requested": 0.3,
       "n": 480,
-      "trials": 2,
+      "trials": 8,
       "SAT": 0,
-      "UNSAT": 0,
-      "UNRESOLVED": 2,
-      "resolved": 0,
-      "fraction_sat_among_resolved": null
+      "UNSAT": 8,
+      "UNRESOLVED": 0,
+      "resolved": 8,
+      "fraction_sat_among_resolved": 0.0
+    },
+    {
+      "alpha_requested": 0.35,
+      "n": 560,
+      "trials": 8,
+      "SAT": 0,
+      "UNSAT": 8,
+      "UNRESOLVED": 0,
+      "resolved": 8,
+      "fraction_sat_among_resolved": 0.0
+    },
+    {
+      "alpha_requested": 0.4,
+      "n": 640,
+      "trials": 8,
+      "SAT": 0,
+      "UNSAT": 8,
+      "UNRESOLVED": 0,
+      "resolved": 8,
+      "fraction_sat_among_resolved": 0.0
     }
   ],
   "interpretation": "Finite-dimensional SDP readings are evaluated relative to the Gaussian asymptotic phase boundary alpha_star(3)=1/4. Agreement is computational support, not verification of Theorem 1.2."

@@ -1,11 +1,89 @@
 alpha_requested,n,alpha_realized,trial,seed,reading,solver,solver_status,equality_residual,min_eigenvalue,note
-0.2,320,0.2,0,643793783,SAT,CLARABEL,optimal,4.796163466380676e-14,0.003933443431558748,solver candidate passed direct equality and PSD validation
-0.2,320,0.2,1,2548207432,SAT,CLARABEL,optimal,4.451994328746878e-14,0.00407642871934373,solver candidate passed direct equality and PSD validation
-0.24,384,0.24,0,1397631429,SAT,CLARABEL,optimal,3.6637359812630166e-15,0.00157668558475968,solver candidate passed direct equality and PSD validation
-0.24,384,0.24,1,484083467,SAT,CLARABEL,optimal,4.9960036108132044e-15,0.0006109229146853505,solver candidate passed direct equality and PSD validation
-0.25,400,0.25,0,4049514288,SAT,CLARABEL,optimal,4.6629367034256575e-15,2.62094558052831e-05,solver candidate passed direct equality and PSD validation
-0.25,400,0.25,1,2828013709,SAT,CLARABEL,optimal,4.107825191113079e-15,0.0003811319929463727,solver candidate passed direct equality and PSD validation
-0.26,416,0.26,0,4228447771,UNRESOLVED,,,,,"CLARABEL: error SolverError: Solver 'CLARABEL' failed. Try another solver, or solve with verbose=True for more information."
-0.26,416,0.26,1,3933422688,UNRESOLVED,,,,,"CLARABEL: error SolverError: Solver 'CLARABEL' failed. Try another solver, or solve with verbose=True for more information."
-0.3,480,0.3,0,360543241,UNRESOLVED,,,,,"CLARABEL: error SolverError: Solver 'CLARABEL' failed. Try another solver, or solve with verbose=True for more information."
-0.3,480,0.3,1,1299770432,UNRESOLVED,,,,,"CLARABEL: error SolverError: Solver 'CLARABEL' failed. Try another solver, or solve with verbose=True for more information."
+0.1,160,0.1,0,643793783,SAT,CLARABEL,optimal,3.086420008457935e-14,0.01001676497155415,solver candidate passed direct equality and PSD validation
+0.1,160,0.1,1,2548207432,SAT,CLARABEL,optimal,1.3322676295501878e-14,0.011344507410639844,solver candidate passed direct equality and PSD validation
+0.1,160,0.1,2,1397631429,SAT,CLARABEL,optimal,1.2323475573339238e-14,0.011439794195619262,solver candidate passed direct equality and PSD validation
+0.1,160,0.1,3,484083467,SAT,CLARABEL,optimal,2.4868995751603507e-14,0.01069054302480368,solver candidate passed direct equality and PSD validation
+0.1,160,0.1,4,4049514288,SAT,CLARABEL,optimal,4.3520742565306136e-14,0.010455380474075406,solver candidate passed direct equality and PSD validation
+0.1,160,0.1,5,2828013709,SAT,CLARABEL,optimal,1.199040866595169e-14,0.010860743146321884,solver candidate passed direct equality and PSD validation
+0.1,160,0.1,6,4228447771,SAT,CLARABEL,optimal,2.5757174171303632e-14,0.009795724616191792,solver candidate passed direct equality and PSD validation
+0.1,160,0.1,7,3933422688,SAT,CLARABEL,optimal,2.4868995751603507e-14,0.010502536737775372,solver candidate passed direct equality and PSD validation
+0.15,240,0.15,0,360543241,SAT,CLARABEL,optimal,2.2870594307278225e-14,0.007778306795726986,solver candidate passed direct equality and PSD validation
+0.15,240,0.15,1,1299770432,SAT,CLARABEL,optimal,1.509903313490213e-14,0.006870726629053239,solver candidate passed direct equality and PSD validation
+0.15,240,0.15,2,3134222685,SAT,CLARABEL,optimal,2.042810365310288e-14,0.007454495045795595,solver candidate passed direct equality and PSD validation
+0.15,240,0.15,3,2665247508,SAT,CLARABEL,optimal,3.197442310920451e-14,0.006974550122214244,solver candidate passed direct equality and PSD validation
+0.15,240,0.15,4,1995819976,SAT,CLARABEL,optimal,2.6201263381153694e-14,0.008123220281910825,solver candidate passed direct equality and PSD validation
+0.15,240,0.15,5,3808443280,SAT,CLARABEL,optimal,2.9976021664879227e-14,0.008668320107708606,solver candidate passed direct equality and PSD validation
+0.15,240,0.15,6,1656109607,SAT,CLARABEL,optimal,1.3322676295501878e-14,0.009230943478318116,solver candidate passed direct equality and PSD validation
+0.15,240,0.15,7,773403930,SAT,CLARABEL,optimal,2.2648549702353193e-14,0.007892054890808627,solver candidate passed direct equality and PSD validation
+0.2,320,0.2,0,4139127098,SAT,CLARABEL,optimal,5.906386491005833e-14,0.003085468457835237,solver candidate passed direct equality and PSD validation
+0.2,320,0.2,1,905364703,SAT,CLARABEL,optimal,3.4638958368304884e-14,0.0046828135684823064,solver candidate passed direct equality and PSD validation
+0.2,320,0.2,2,793660277,SAT,CLARABEL,optimal,4.3298697960381105e-14,0.0040307871785685645,solver candidate passed direct equality and PSD validation
+0.2,320,0.2,3,3582256760,SAT,CLARABEL,optimal,3.574918139293004e-14,0.005336114778145079,solver candidate passed direct equality and PSD validation
+0.2,320,0.2,4,3694812728,SAT,CLARABEL,optimal,9.880984919163893e-14,0.0022112593445491715,solver candidate passed direct equality and PSD validation
+0.2,320,0.2,5,1456728754,SAT,CLARABEL,optimal,9.026113190202523e-14,0.004435691231203188,solver candidate passed direct equality and PSD validation
+0.2,320,0.2,6,1474848072,SAT,CLARABEL,optimal,1.0458300891968975e-13,0.003999631203632113,solver candidate passed direct equality and PSD validation
+0.2,320,0.2,7,2742883849,SAT,CLARABEL,optimal,4.1300296516055823e-14,0.004695076967831472,solver candidate passed direct equality and PSD validation
+0.225,360,0.225,0,671455921,SAT,CLARABEL,optimal,5.10702591327572e-15,0.0006661784823902053,solver candidate passed direct equality and PSD validation
+0.225,360,0.225,1,1493818202,SAT,CLARABEL,optimal,9.57012247226885e-14,0.002155858469751742,solver candidate passed direct equality and PSD validation
+0.225,360,0.225,2,2461493152,SAT,CLARABEL,optimal,6.328271240363392e-14,0.003111443093187319,solver candidate passed direct equality and PSD validation
+0.225,360,0.225,3,2898852472,SAT,CLARABEL,optimal,4.551914400963142e-15,0.0005773614575057344,solver candidate passed direct equality and PSD validation
+0.225,360,0.225,4,2351538536,SAT,CLARABEL,optimal,1.965094753586527e-13,0.0017237175050100818,solver candidate passed direct equality and PSD validation
+0.225,360,0.225,5,2403025894,SAT,CLARABEL,optimal,1.0236256287043943e-13,0.0021514998520219177,solver candidate passed direct equality and PSD validation
+0.225,360,0.225,6,846522657,SAT,CLARABEL,optimal,8.43769498715119e-14,0.0024671976612273072,solver candidate passed direct equality and PSD validation
+0.225,360,0.225,7,80195453,SAT,CLARABEL,optimal,1.142419492339286e-13,0.0025948931183087305,solver candidate passed direct equality and PSD validation
+0.24,384,0.24,0,1541932899,SAT,CLARABEL,optimal,4.551914400963142e-15,0.0011217549484359517,solver candidate passed direct equality and PSD validation
+0.24,384,0.24,1,3787039384,SAT,CLARABEL,optimal,4.6629367034256575e-15,0.0008094758949216214,solver candidate passed direct equality and PSD validation
+0.24,384,0.24,2,350110095,SAT,CLARABEL,optimal,9.781064846947629e-14,0.002265659055324132,solver candidate passed direct equality and PSD validation
+0.24,384,0.24,3,1613945975,SAT,CLARABEL,optimal,5.88418203051333e-15,5.217541854579566e-05,solver candidate passed direct equality and PSD validation
+0.24,384,0.24,4,3300222038,SAT,CLARABEL,optimal,4.440892098500626e-15,0.0005085446874823049,solver candidate passed direct equality and PSD validation
+0.24,384,0.24,5,4146038482,SAT,CLARABEL,optimal,3.552713678800501e-15,3.3132178853613793e-06,solver candidate passed direct equality and PSD validation
+0.24,384,0.24,6,2878448178,UNSAT,CVXOPT,infeasible,,,solver reported infeasible
+0.24,384,0.24,7,330273416,SAT,CLARABEL,optimal,1.199040866595169e-13,0.0027625442448761133,solver candidate passed direct equality and PSD validation
+0.25,400,0.25,0,3336551942,SAT,CLARABEL,optimal,5.662137425588298e-15,0.0002927745799125742,solver candidate passed direct equality and PSD validation
+0.25,400,0.25,1,1240055499,SAT,CLARABEL,optimal,3.774758283725532e-15,0.0004561876529403124,solver candidate passed direct equality and PSD validation
+0.25,400,0.25,2,2572151444,SAT,CLARABEL,optimal,4.218847493575595e-15,6.374830302005353e-05,solver candidate passed direct equality and PSD validation
+0.25,400,0.25,3,1563958288,UNSAT,CVXOPT,infeasible,,,solver reported infeasible
+0.25,400,0.25,4,3037723227,UNSAT,CVXOPT,infeasible,,,solver reported infeasible
+0.25,400,0.25,5,3818633404,UNSAT,CVXOPT,infeasible,,,solver reported infeasible
+0.25,400,0.25,6,2308003331,UNSAT,CVXOPT,infeasible,,,solver reported infeasible
+0.25,400,0.25,7,1602483518,UNSAT,CVXOPT,infeasible,,,solver reported infeasible
+0.26,416,0.26,0,691528654,UNSAT,CVXOPT,infeasible,,,solver reported infeasible
+0.26,416,0.26,1,364035643,UNSAT,CVXOPT,infeasible,,,solver reported infeasible
+0.26,416,0.26,2,1318766141,UNSAT,CVXOPT,infeasible,,,solver reported infeasible
+0.26,416,0.26,3,2885995019,UNSAT,CVXOPT,infeasible,,,solver reported infeasible
+0.26,416,0.26,4,171305098,UNSAT,CVXOPT,infeasible,,,solver reported infeasible
+0.26,416,0.26,5,3504544690,UNSAT,CVXOPT,infeasible,,,solver reported infeasible
+0.26,416,0.26,6,1893549543,UNSAT,CVXOPT,infeasible,,,solver reported infeasible
+0.26,416,0.26,7,867232453,UNSAT,CVXOPT,infeasible,,,solver reported infeasible
+0.275,440,0.275,0,1008362008,UNSAT,CVXOPT,infeasible,,,solver reported infeasible
+0.275,440,0.275,1,2309351619,UNSAT,CVXOPT,infeasible,,,solver reported infeasible
+0.275,440,0.275,2,2198378312,UNSAT,CVXOPT,infeasible,,,solver reported infeasible
+0.275,440,0.275,3,1850523879,UNSAT,CVXOPT,infeasible,,,solver reported infeasible
+0.275,440,0.275,4,433244044,UNSAT,CVXOPT,infeasible,,,solver reported infeasible
+0.275,440,0.275,5,2076357343,UNSAT,CVXOPT,infeasible,,,solver reported infeasible
+0.275,440,0.275,6,3585760465,UNSAT,CVXOPT,infeasible,,,solver reported infeasible
+0.275,440,0.275,7,493798116,UNSAT,CVXOPT,infeasible,,,solver reported infeasible
+0.3,480,0.3,0,2123407212,UNSAT,CVXOPT,infeasible,,,solver reported infeasible
+0.3,480,0.3,1,108565867,UNSAT,CVXOPT,infeasible,,,solver reported infeasible
+0.3,480,0.3,2,2527613930,UNSAT,CVXOPT,infeasible,,,solver reported infeasible
+0.3,480,0.3,3,3636140041,UNSAT,CVXOPT,infeasible,,,solver reported infeasible
+0.3,480,0.3,4,3329305298,UNSAT,CVXOPT,infeasible,,,solver reported infeasible
+0.3,480,0.3,5,2023679801,UNSAT,CVXOPT,infeasible,,,solver reported infeasible
+0.3,480,0.3,6,1393067345,UNSAT,CVXOPT,infeasible,,,solver reported infeasible
+0.3,480,0.3,7,3831726877,UNSAT,CVXOPT,infeasible,,,solver reported infeasible
+0.35,560,0.35,0,4184333422,UNSAT,CVXOPT,infeasible,,,solver reported infeasible
+0.35,560,0.35,1,2830775407,UNSAT,CVXOPT,infeasible,,,solver reported infeasible
+0.35,560,0.35,2,1757829700,UNSAT,CVXOPT,infeasible,,,solver reported infeasible
+0.35,560,0.35,3,376215751,UNSAT,CVXOPT,infeasible,,,solver reported infeasible
+0.35,560,0.35,4,2838001240,UNSAT,CVXOPT,infeasible,,,solver reported infeasible
+0.35,560,0.35,5,2001691856,UNSAT,CVXOPT,infeasible,,,solver reported infeasible
+0.35,560,0.35,6,3062396884,UNSAT,CVXOPT,infeasible,,,solver reported infeasible
+0.35,560,0.35,7,779050516,UNSAT,CVXOPT,infeasible,,,solver reported infeasible
+0.4,640,0.4,0,1529299850,UNSAT,CVXOPT,infeasible,,,solver reported infeasible
+0.4,640,0.4,1,2668774645,UNSAT,CVXOPT,infeasible,,,solver reported infeasible
+0.4,640,0.4,2,2083587702,UNSAT,CVXOPT,infeasible,,,solver reported infeasible
+0.4,640,0.4,3,1165477051,UNSAT,CVXOPT,infeasible,,,solver reported infeasible
+0.4,640,0.4,4,2326627211,UNSAT,CVXOPT,infeasible,,,solver reported infeasible
+0.4,640,0.4,5,68280604,UNSAT,CVXOPT,infeasible,,,solver reported infeasible
+0.4,640,0.4,6,3068672338,UNSAT,CVXOPT,infeasible,,,solver reported infeasible
+0.4,640,0.4,7,784842401,UNSAT,CVXOPT,infeasible,,,solver reported infeasible
