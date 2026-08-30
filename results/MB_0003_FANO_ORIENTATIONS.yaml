@@ -37,24 +37,29 @@ specification:
 
   structural_explanation: >
     Encode each orientation choice as a vector s in F_2^7 (one bit per
-    line). Expanding the associator-alternation identity [e_i,e_j,e_k] =
-    -[e_j,e_i,e_k] symbolically for every triple of distinct points shows
-    the condition is F_2-linear in s (signs compose by XOR of orientation
-    bits), and reduces, after removing the seven triples that coincide
-    with a line itself (which impose no constraint), to exactly seven
-    distinct point-indexed constraints: for each point p, the sum of
-    orientation bits over the four lines NOT containing p must be even.
-    This 7x7 constraint system has rank 3 over F_2, so its null space
-    has 2^(7-3)=16 elements. Independently, a basis sign-flip e_i ->
-    epsilon_i e_i transforms s by s -> s + M*eps (mod 2), where M is
-    the Fano point-line incidence matrix (rank 4 over F_2, a classical
-    fact independently confirmed here), giving an image of 2^4=16
-    elements, each explicitly isomorphic to the standard octonions.
-    These two independently-derived 16-element sets are shown to
-    coincide exactly, giving a complete analytic proof of the
-    classification (see proofs/MB_0003_FANO_ORIENTATIONS.md) -- the
-    exhaustive 128-orientation computer check is independent
-    verification of this proof, not an ingredient it depends on.
+    line). Expanding both associator-antisymmetry identities symbolically
+    (swap first two arguments; swap last two arguments) for every triple
+    of distinct points shows each condition is F_2-linear in s (signs
+    compose by XOR of orientation bits), and both independently reduce,
+    after removing the seven triples that coincide with a line itself
+    (which impose no constraint), to the SAME seven point-indexed
+    constraints: for each point p, the sum of orientation bits over the
+    four lines NOT containing p must be even -- i.e. Cs=0 (mod 2) for
+    an explicit 7x7 matrix C. Separately, a basis sign-flip transforms s
+    by s -> s + M*eps (mod 2), where M is the Fano point-line incidence
+    matrix. The identity C = J + M^T (mod 2, J the all-ones matrix),
+    together with two design-theoretic facts about the Fano plane
+    (M^T M = J and JM = J, both consequences of each point lying on
+    exactly 3 lines and each pair of points sharing exactly 1 line),
+    gives CM = JM + M^T M = J + J = 0 (mod 2) identically -- no
+    per-triple case analysis needed for this step. This shows im(M) is
+    contained in ker(C); combined with the general rank inequality
+    rank(C) >= |rank(J)-rank(M)| = 3 and the dimension bound rank(C) <=
+    7-rank(M) = 3 forced by containment, rank(C)=3 exactly, so
+    dim ker(C) = dim im(M) = 4, forcing im(M) = ker(C) exactly. The
+    exhaustive 128-orientation computer check (both antisymmetry
+    identities) is independent verification of this proof, not an
+    ingredient it depends on.
 
   leading_constraints:
     - "Norm multiplicativity is a corollary of the isomorphism to the standard octonions (which has multiplicative Euclidean norm), not an independently defining condition -- checked as verification evidence, not part of the theorem's logical structure."
