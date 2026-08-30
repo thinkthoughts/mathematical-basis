@@ -37,20 +37,24 @@ specification:
 
   structural_explanation: >
     Encode each orientation choice as a vector s in F_2^7 (one bit per
-    line). A basis sign-flip e_i -> epsilon_i e_i, encoded as a vector
-    eps in F_2^7, transforms a line's orientation bit by XOR with the
-    parity of eps over that line's three points -- i.e. s -> s + M*eps
-    (mod 2), where M is the 7x7 point-line incidence matrix of the Fano
-    plane. Over F_2, M has rank 4 (a classical fact about the Fano
-    incidence matrix, independently confirmed here computationally),
-    so the image of eps -> M*eps has exactly 2^4 = 16 elements and the
-    kernel has 2^(7-4) = 8 elements. Every orientation in this image is
-    reachable from the base (Baez) orientation by an explicit sign-flip
-    isomorphism, hence alternative; since the image has exactly 16
-    elements and exhaustive direct verification finds exactly 16
-    alternative orientations total, the image equals the full alternative
-    set -- alternativity is exactly characterized by membership in
-    im(M), not merely correlated with it.
+    line). Expanding the associator-alternation identity [e_i,e_j,e_k] =
+    -[e_j,e_i,e_k] symbolically for every triple of distinct points shows
+    the condition is F_2-linear in s (signs compose by XOR of orientation
+    bits), and reduces, after removing the seven triples that coincide
+    with a line itself (which impose no constraint), to exactly seven
+    distinct point-indexed constraints: for each point p, the sum of
+    orientation bits over the four lines NOT containing p must be even.
+    This 7x7 constraint system has rank 3 over F_2, so its null space
+    has 2^(7-3)=16 elements. Independently, a basis sign-flip e_i ->
+    epsilon_i e_i transforms s by s -> s + M*eps (mod 2), where M is
+    the Fano point-line incidence matrix (rank 4 over F_2, a classical
+    fact independently confirmed here), giving an image of 2^4=16
+    elements, each explicitly isomorphic to the standard octonions.
+    These two independently-derived 16-element sets are shown to
+    coincide exactly, giving a complete analytic proof of the
+    classification (see proofs/MB_0003_FANO_ORIENTATIONS.md) -- the
+    exhaustive 128-orientation computer check is independent
+    verification of this proof, not an ingredient it depends on.
 
   leading_constraints:
     - "Norm multiplicativity is a corollary of the isomorphism to the standard octonions (which has multiplicative Euclidean norm), not an independently defining condition -- checked as verification evidence, not part of the theorem's logical structure."
