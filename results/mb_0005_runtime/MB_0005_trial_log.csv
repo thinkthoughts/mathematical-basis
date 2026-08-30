@@ -1,0 +1,11 @@
+alpha_requested,n,alpha_realized,trial,seed,reading,solver,solver_status,equality_residual,min_eigenvalue,note
+0.2,320,0.2,0,643793783,SAT,CLARABEL,optimal,4.796163466380676e-14,0.003933443431558748,solver candidate passed direct equality and PSD validation
+0.2,320,0.2,1,2548207432,SAT,CLARABEL,optimal,4.451994328746878e-14,0.00407642871934373,solver candidate passed direct equality and PSD validation
+0.24,384,0.24,0,1397631429,SAT,CLARABEL,optimal,3.6637359812630166e-15,0.00157668558475968,solver candidate passed direct equality and PSD validation
+0.24,384,0.24,1,484083467,SAT,CLARABEL,optimal,4.9960036108132044e-15,0.0006109229146853505,solver candidate passed direct equality and PSD validation
+0.25,400,0.25,0,4049514288,SAT,CLARABEL,optimal,4.6629367034256575e-15,2.62094558052831e-05,solver candidate passed direct equality and PSD validation
+0.25,400,0.25,1,2828013709,SAT,CLARABEL,optimal,4.107825191113079e-15,0.0003811319929463727,solver candidate passed direct equality and PSD validation
+0.26,416,0.26,0,4228447771,UNRESOLVED,,,,,"CLARABEL: error SolverError: Solver 'CLARABEL' failed. Try another solver, or solve with verbose=True for more information."
+0.26,416,0.26,1,3933422688,UNRESOLVED,,,,,"CLARABEL: error SolverError: Solver 'CLARABEL' failed. Try another solver, or solve with verbose=True for more information."
+0.3,480,0.3,0,360543241,UNRESOLVED,,,,,"CLARABEL: error SolverError: Solver 'CLARABEL' failed. Try another solver, or solve with verbose=True for more information."
+0.3,480,0.3,1,1299770432,UNRESOLVED,,,,,"CLARABEL: error SolverError: Solver 'CLARABEL' failed. Try another solver, or solve with verbose=True for more information."

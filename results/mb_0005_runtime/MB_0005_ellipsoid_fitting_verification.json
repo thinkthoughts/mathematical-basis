@@ -1,0 +1,83 @@
+{
+  "id": "MB_0005",
+  "test": "finite_dimensional_gaussian_ellipsoid_fitting",
+  "status": {
+    "mathematical": "audited",
+    "computational": "supported",
+    "theorem_from_computation": "unsupported"
+  },
+  "specification": {
+    "distribution": "standard Gaussian coordinates",
+    "kappa": 3.0,
+    "alpha_star": 0.25,
+    "dimension": 40,
+    "predicted_transition_n": 400,
+    "equality_tolerance": 0.0001,
+    "psd_tolerance": 1e-06
+  },
+  "run": {
+    "mode": "quick",
+    "seed": 260827372,
+    "trials_per_alpha": 2,
+    "alphas": [
+      0.2,
+      0.24,
+      0.25,
+      0.26,
+      0.3
+    ]
+  },
+  "summary": [
+    {
+      "alpha_requested": 0.2,
+      "n": 320,
+      "trials": 2,
+      "SAT": 2,
+      "UNSAT": 0,
+      "UNRESOLVED": 0,
+      "resolved": 2,
+      "fraction_sat_among_resolved": 1.0
+    },
+    {
+      "alpha_requested": 0.24,
+      "n": 384,
+      "trials": 2,
+      "SAT": 2,
+      "UNSAT": 0,
+      "UNRESOLVED": 0,
+      "resolved": 2,
+      "fraction_sat_among_resolved": 1.0
+    },
+    {
+      "alpha_requested": 0.25,
+      "n": 400,
+      "trials": 2,
+      "SAT": 2,
+      "UNSAT": 0,
+      "UNRESOLVED": 0,
+      "resolved": 2,
+      "fraction_sat_among_resolved": 1.0
+    },
+    {
+      "alpha_requested": 0.26,
+      "n": 416,
+      "trials": 2,
+      "SAT": 0,
+      "UNSAT": 0,
+      "UNRESOLVED": 2,
+      "resolved": 0,
+      "fraction_sat_among_resolved": null
+    },
+    {
+      "alpha_requested": 0.3,
+      "n": 480,
+      "trials": 2,
+      "SAT": 0,
+      "UNSAT": 0,
+      "UNRESOLVED": 2,
+      "resolved": 0,
+      "fraction_sat_among_resolved": null
+    }
+  ],
+  "interpretation": "Finite-dimensional SDP readings are evaluated relative to the Gaussian asymptotic phase boundary alpha_star(3)=1/4. Agreement is computational support, not verification of Theorem 1.2."
+}

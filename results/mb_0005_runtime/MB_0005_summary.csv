@@ -1,0 +1,6 @@
+alpha_requested,n,trials,SAT,UNSAT,UNRESOLVED,resolved,fraction_sat_among_resolved
+0.2,320,2,2,0,0,2,1.0
+0.24,384,2,2,0,0,2,1.0
+0.25,400,2,2,0,0,2,1.0
+0.26,416,2,0,0,2,0,
+0.3,480,2,0,0,2,0,
