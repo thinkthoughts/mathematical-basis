@@ -29,48 +29,55 @@ validation:
   psd_check: "lambda_min(R) >= -1e-6"
   solver_status_alone_is_reading: false
 
-observed_prior_validated_run:
+observed_run:
   provenance: >
-    Recorded from the previously validated MB_0005 precursor notebook run
-    for arXiv:2608.27372. The standalone MB_0005 test script reproduces the
-    same computational contract; this result file should be regenerated from
-    the script when the repository environment has CVXPY plus CLARABEL and/or SCS.
+    Recorded from the standalone MB_0005 verification script in paper mode
+    for arXiv:2608.27372. The run uses d=40 with eight trials at each sampled
+    constraint density and evaluates finite-dimensional SDP readings relative
+    to the Gaussian asymptotic boundary alpha_star(3)=1/4.
+  runtime_refs:
+    trial_log: results/mb_0005_runtime/MB_0005_trial_log.csv
+    summary: results/mb_0005_runtime/MB_0005_summary.csv
+    json: results/mb_0005_runtime/MB_0005_ellipsoid_fitting_verification.json
   trials_per_density: 8
   rows:
     - {alpha: 0.10,  n: 160, SAT: 8, UNSAT: 0, UNRESOLVED: 0}
     - {alpha: 0.15,  n: 240, SAT: 8, UNSAT: 0, UNRESOLVED: 0}
     - {alpha: 0.20,  n: 320, SAT: 8, UNSAT: 0, UNRESOLVED: 0}
     - {alpha: 0.225, n: 360, SAT: 8, UNSAT: 0, UNRESOLVED: 0}
-    - {alpha: 0.24,  n: 384, SAT: 8, UNSAT: 0, UNRESOLVED: 0}
-    - {alpha: 0.25,  n: 400, SAT: 2, UNSAT: 4, UNRESOLVED: 2}
-    - {alpha: 0.26,  n: 416, SAT: 0, UNSAT: 7, UNRESOLVED: 1}
-    - {alpha: 0.275, n: 440, SAT: 0, UNSAT: 7, UNRESOLVED: 1}
+    - {alpha: 0.24,  n: 384, SAT: 7, UNSAT: 1, UNRESOLVED: 0}
+    - {alpha: 0.25,  n: 400, SAT: 3, UNSAT: 5, UNRESOLVED: 0}
+    - {alpha: 0.26,  n: 416, SAT: 0, UNSAT: 8, UNRESOLVED: 0}
+    - {alpha: 0.275, n: 440, SAT: 0, UNSAT: 8, UNRESOLVED: 0}
     - {alpha: 0.30,  n: 480, SAT: 0, UNSAT: 8, UNRESOLVED: 0}
     - {alpha: 0.35,  n: 560, SAT: 0, UNSAT: 8, UNRESOLVED: 0}
     - {alpha: 0.40,  n: 640, SAT: 0, UNSAT: 8, UNRESOLVED: 0}
   totals:
     trials: 88
     SAT: 42
-    UNSAT: 42
-    UNRESOLVED: 4
+    UNSAT: 46
+    UNRESOLVED: 0
 
 reading:
   below_boundary: >
-    All 40 sampled trials at alpha = 0.10, 0.15, 0.20, 0.225, and 0.24
-    validated SAT.
+    At alpha = 0.10, 0.15, 0.20, and 0.225, all 32 sampled trials
+    validated SAT. At alpha = 0.24, 7 of 8 trials validated SAT and
+    1 trial produced an UNSAT reading.
   at_boundary: >
     At alpha = 0.25 (n=400), the finite-dimensional sample produced
-    2 SAT, 4 UNSAT, and 2 UNRESOLVED readings.
+    3 SAT and 5 UNSAT readings.
   above_boundary: >
-    At alpha = 0.26 and 0.275, 7 of 8 trials were UNSAT with 1 unresolved
-    at each density. At alpha = 0.30, 0.35, and 0.40, all 8 trials at each
-    density were UNSAT.
+    At alpha = 0.26, 0.275, 0.30, 0.35, and 0.40, all 8 trials at
+    each density produced UNSAT readings.
 
 interpretation:
   summary: >
     The validated finite-dimensional Gaussian readings exhibit a transition
-    around the asymptotic prediction alpha_star(3)=1/4. This supports the
-    computational realization of MB_0005.
+    around the asymptotic prediction alpha_star(3)=1/4. Readings are uniformly
+    SAT at the sampled densities through alpha=0.225, mixed near the boundary
+    at alpha=0.24 and alpha=0.25, and uniformly UNSAT at every sampled density
+    from alpha=0.26 through alpha=0.40. This supports the computational
+    realization of MB_0005.
   scope: >
     The run does not verify the asymptotic high-probability theorem, the CGMT
     reduction, the universality argument, the anti-concentration step, or the
