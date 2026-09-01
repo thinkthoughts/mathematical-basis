@@ -4,15 +4,15 @@
 
 ## Motivation
 
-The previous draft still required $\gcd(a,m)=1$. But by the same logic that made $m\mid N$ removable, this is stronger than needed: primes of $m$ that don't divide $N$ can never affect $\gcd(n,N)$, so $a$ only needs to avoid the primes $m$ and $N$ actually *share*. The sharp hypothesis is $\gcd(a,d)=1$ where $d=\operatorname{rad}(\gcd(m,N))$ — and when that fails, the count isn't merely different, it's identically zero, giving a genuine dichotomy rather than a boundary case to patch around.
+The previous draft still required $\gcd(a,m)=1$. But by the same logic that made $m\mid N$ removable, this is stronger than needed: primes of $m$ that don't divide $N$ can never affect $\gcd(n,N)$, so $a$ only needs to avoid the primes $m$ and $N$ actually *share*. The sharp hypothesis is $\gcd(a,d)=1$ where $d=\mathrm{rad}(\gcd(m,N))$ — and when that fails, the count isn't merely different, it's identically zero, giving a genuine dichotomy rather than a boundary case to patch around.
 
 ## Setup
 
 $N$ any positive integer, $m>1$ any positive integer, $a$ any integer. Define
 $$
-d=\operatorname{rad}(\gcd(m,N))=\prod_{p\mid m,\,p\mid N} p, \qquad R=\prod_{p\mid N,\,p\nmid m} p,
+d=\mathrm{rad}(\gcd(m,N))=\prod_{p\mid m,\,p\mid N} p, \qquad R=\prod_{p\mid N,\,p\nmid m} p,
 $$
-so $\gcd(m,R)=1$ and $dR=\operatorname{rad}(N)$.
+so $\gcd(m,R)=1$ and $dR=\mathrm{rad}(N)$.
 
 ## Theorem 3 (Final form)
 
@@ -22,7 +22,7 @@ Let $S(L) = \{n\le L : n\equiv a\!\!\pmod m,\ \gcd(n,N)=1\}$.
 $$
 |S(L)| = q\,\varphi(R) + R_{\mathrm{rem}}(s), \qquad L=qT_{\min}+s,\ 0\le s<T_{\min},
 $$
-with minimal period $T_{\min}=mR=\operatorname{lcm}(m,\operatorname{rad}(N))$, and against the naive predicted count $\frac{\varphi(N)}{N}\cdot\frac{L}{m}$,
+with minimal period $T_{\min}=mR=\mathrm{lcm}(m,\mathrm{rad}(N))$, and against the naive predicted count $\frac{\varphi(N)}{N}\cdot\frac{L}{m}$,
 $$
 C(N,m) = \frac{d}{\varphi(d)} = \prod_{p\mid \gcd(m,N)} \frac{p}{p-1}.
 $$
@@ -45,7 +45,7 @@ n_1 \equiv a \pmod m,\qquad n_1\equiv -t \pmod p,\qquad n_1\equiv 1\pmod{q}\ \te
 $$
 (These moduli are pairwise coprime, so this system is solvable.) Since $p\nmid t$, $-t\not\equiv0\pmod p$, so $n_1\not\equiv0\pmod p$; combined with $n_1\equiv1$ mod every other prime of $R$, $n_1$ is coprime to $R$, hence accepted. But $n_1+t\equiv -t+t=0\pmod p$, so $n_1+t$ is *not* coprime to $R$ — not accepted. This contradicts periodicity. Hence $p\mid t$ for every prime $p\mid R$; since $R$ is squarefree, $R\mid t$. Combined with $m\mid t$ and $\gcd(m,R)=1$: $mR\mid t$, so $t\ge mR$. Since $mR$ is itself a period, $T_{\min}=mR$ is exactly minimal. $\blacksquare$
 
-**Proof of the ratio $C(N,m)=d/\varphi(d)$.** Write $N=AB$, $A=\prod_{p\mid N,p\mid m}p^{e_p}$ ($\operatorname{rad}(A)=d$), $B=\prod_{p\mid N,p\nmid m}p^{e_p}$ ($\operatorname{rad}(B)=R$), $\gcd(A,B)=1$. Exponent-blindness gives $\varphi(B)/B=\varphi(R)/R$. Then
+**Proof of the ratio $C(N,m)=d/\varphi(d)$.** Write $N=AB$, $A=\prod_{p\mid N,p\mid m}p^{e_p}$ ($\mathrm{rad}(A)=d$), $B=\prod_{p\mid N,p\nmid m}p^{e_p}$ ($\mathrm{rad}(B)=R$), $\gcd(A,B)=1$. Exponent-blindness gives $\varphi(B)/B=\varphi(R)/R$. Then
 $$
 C = \frac{\varphi(R)/(mR)}{\varphi(N)/(Nm)} = \frac{N\varphi(R)}{R\varphi(N)} = \frac{AB\varphi(R)}{R\,\varphi(A)\varphi(B)} = \frac{AB\varphi(R)}{R\,\varphi(A)\,(B\varphi(R)/R)} = \frac{A}{\varphi(A)} = \frac{d}{\varphi(d)}.\qquad\blacksquare
 $$
@@ -54,29 +54,29 @@ Note this proof never used $\gcd(a,d)=1$ — the ratio formula holds throughout 
 ## Specializations
 
 - $\gcd(a,m)=1 \Rightarrow \gcd(a,d)=1$ automatically (since $d\mid m$), recovering the previous Theorem 3 as the sub-case where $a$ is required coprime to *all* of $m$, not just the shared part.
-- $m\mid N \Rightarrow d=\operatorname{rad}(m)$, giving $C=m/\varphi(m)$ (Theorem 2).
+- $m\mid N \Rightarrow d=\mathrm{rad}(m)$, giving $C=m/\varphi(m)$ (Theorem 2).
 - $m$ unitary in $N$, $N$ squarefree: as before, nesting down to Theorem 1′ and Theorem 1.
 
 ## Distinguishing example: $N=5, m=6, a=2$
 
-$\gcd(a,m)=\gcd(2,6)=2\ne1$ — excluded under the old hypothesis. But $d=\operatorname{rad}(\gcd(6,5))=\operatorname{rad}(1)=1$, and $\gcd(a,d)=\gcd(2,1)=1$: admissible under the sharp condition.
+$\gcd(a,m)=\gcd(2,6)=2\ne1$ — excluded under the old hypothesis. But $d=\mathrm{rad}(\gcd(6,5))=\mathrm{rad}(1)=1$, and $\gcd(a,d)=\gcd(2,1)=1$: admissible under the sharp condition.
 
-$R=\operatorname{rad}(5)=5$ (since $5\nmid6$), $T_{\min}=mR=30$. Direct check, $n\equiv2\pmod6$ in $[1,30]$: $\{2,8,14,20,26\}$. Coprime to $5$: $2$ (yes), $8$ (yes), $14$ (yes), $20$ (no, divisible by 5), $26$ (yes). Count $=4=\varphi(5)$. ✓.
+$R=\mathrm{rad}(5)=5$ (since $5\nmid6$), $T_{\min}=mR=30$. Direct check, $n\equiv2\pmod6$ in $[1,30]$: $\{2,8,14,20,26\}$. Coprime to $5$: $2$ (yes), $8$ (yes), $14$ (yes), $20$ (no, divisible by 5), $26$ (yes). Count $=4=\varphi(5)$. ✓.
 
 $C(5,6)=d/\varphi(d)=1/\varphi(1)=1$. Naive prediction: $\varphi(5)/5\cdot(30/6)=(4/5)\cdot5=4$. Ratio $4/4=1$. ✓ — and indeed $m/\varphi(m)=6/\varphi(6)=3$ would have been wrong, confirming the weakening is genuine, not cosmetic.
 
 ## Zero-count example (for completeness)
 
-$N=6,m=4,a=2$: $d=\operatorname{rad}(\gcd(4,6))=\operatorname{rad}(2)=2$, and $\gcd(a,d)=\gcd(2,2)=2>1$. Prediction: $S(L)=\varnothing$ for all $L$. Check: $n\equiv2\pmod4$ gives $n\in\{2,6,10,14,\dots\}$, all even, hence never coprime to $N=6$ (which is even). Confirmed identically zero.
+$N=6,m=4,a=2$: $d=\mathrm{rad}(\gcd(4,6))=\mathrm{rad}(2)=2$, and $\gcd(a,d)=\gcd(2,2)=2>1$. Prediction: $S(L)=\varnothing$ for all $L$. Check: $n\equiv2\pmod4$ gives $n\in\{2,6,10,14,\dots\}$, all even, hence never coprime to $N=6$ (which is even). Confirmed identically zero.
 
 ## The complete hierarchy
 
 $$
-d=\operatorname{rad}(\gcd(m,N)),\quad R=\operatorname{rad}(N)/d,\quad T_{\min}=mR,\quad C(N,m)=\frac d{\varphi(d)}\ \ (\text{or }0\text{ if }\gcd(a,d)>1),
+d=\mathrm{rad}(\gcd(m,N)),\quad R=\mathrm{rad}(N)/d,\quad T_{\min}=mR,\quad C(N,m)=\frac d{\varphi(d)}\ \ (\text{or }0\text{ if }\gcd(a,d)>1),
 $$
-reducing each input to exactly the information relevant to the interaction: $N\to\operatorname{rad}(N)$, $m\to$ which primes it shares with $N$, $a\to$ whether it avoids those shared primes.
+reducing each input to exactly the information relevant to the interaction: $N\to\mathrm{rad}(N)$, $m\to$ which primes it shares with $N$, $a\to$ whether it avoids those shared primes.
 
-Theorem 1 (primorial) ⊂ Theorem 1′ (unitary divisor) ⊂ Theorem 2 ($m\mid N$) ⊂ Theorem 3, earlier draft ($\gcd(a,m)=1$) ⊂ **Theorem 3, final** ($\gcd(a,d)=1$, with the complementary zero case). This chain is now closed: every hypothesis in it has been shown either load-bearing (with a distinguishing numerical example) or removable, and no further prime-support information beyond $d$, $R$, and $\operatorname{rad}(N)$ remains to be extracted from $(N,m,a)$.
+Theorem 1 (primorial) ⊂ Theorem 1′ (unitary divisor) ⊂ Theorem 2 ($m\mid N$) ⊂ Theorem 3, earlier draft ($\gcd(a,m)=1$) ⊂ **Theorem 3, final** ($\gcd(a,d)=1$, with the complementary zero case). This chain is now closed: every hypothesis in it has been shown either load-bearing (with a distinguishing numerical example) or removable, and no further prime-support information beyond $d$, $R$, and $\mathrm{rad}(N)$ remains to be extracted from $(N,m,a)$.
 
 ## Note on document status
 
