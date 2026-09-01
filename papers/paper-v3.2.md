@@ -10,9 +10,9 @@ at the end of this document for a full record of changes.
 
 Let $N,m$ be positive integers and $a$ an integer. Write
 $$
-d=\operatorname{rad}(\gcd(m,N)),
+d=\mathrm{rad}(\gcd(m,N)),
 \qquad
-R=\frac{\operatorname{rad}(N)}{d}.
+R=\frac{\mathrm{rad}(N)}{d}.
 $$
 For
 $$
@@ -22,7 +22,7 @@ S(N,L,m,a)
 $$
 we prove an exact dichotomy. If $\gcd(a,d)=1$, the associated indicator has exact minimal period
 $$
-T_{\min}=mR=\operatorname{lcm}(m,\operatorname{rad}(N)),
+T_{\min}=mR=\mathrm{lcm}(m,\mathrm{rad}(N)),
 $$
 with exactly $\varphi(R)$ accepted values per period. Relative to the naive independent-density prediction
 $$
@@ -60,7 +60,7 @@ role in this double-counting.
 
 This motivates isolating the shared-prime structure directly, via
 $$
-d=\operatorname{rad}(\gcd(m,N)), \qquad R=\frac{\operatorname{rad}(N)}{d},
+d=\mathrm{rad}(\gcd(m,N)), \qquad R=\frac{\mathrm{rad}(N)}{d},
 $$
 the radical of the primes $m$ and $N$ have in common, and the radical formed from the primes of
 $N$ not shared with $m$. Section 2 states and proves the exact correction this produces. Section 3 walks
@@ -73,31 +73,31 @@ through its specializations, recovering progressively more restrictive — and h
 
 **Lemma** (exponent-blindness). For every integer $k\ge1$,
 $$
-\frac{k}{\varphi(k)} = \frac{\operatorname{rad}(k)}{\varphi(\operatorname{rad}(k))},
+\frac{k}{\varphi(k)} = \frac{\mathrm{rad}(k)}{\varphi(\mathrm{rad}(k))},
 $$
-where $\operatorname{rad}(k)$ is the product of the distinct primes dividing $k$
-($\operatorname{rad}(1)=1$).
+where $\mathrm{rad}(k)$ is the product of the distinct primes dividing $k$
+($\mathrm{rad}(1)=1$).
 
 **Proof.** For $k=1$ both sides equal $1$. For $k>1$, write $k=\prod_i p_i^{e_i}$. For each prime
 power, $\varphi(p_i^{e_i})/p_i^{e_i}=1-1/p_i$, independent of $e_i$. By multiplicativity,
 $$
 \frac{k}{\varphi(k)} = \prod_i\frac{1}{1-1/p_i} = \prod_{p\mid k}\frac{p}{p-1},
 $$
-which depends only on the set of primes dividing $k$ — i.e. only on $\operatorname{rad}(k)$.
-Applying the identical computation to $\operatorname{rad}(k)$ (all exponents $1$) gives the same
+which depends only on the set of primes dividing $k$ — i.e. only on $\mathrm{rad}(k)$.
+Applying the identical computation to $\mathrm{rad}(k)$ (all exponents $1$) gives the same
 product. $\blacksquare$
 
 ### 2.2 Theorem 3 (General Divisor Theorem)
 
 Let $N,m$ be any positive integers, $a$ any integer. Define
 $$
-d = \operatorname{rad}(\gcd(m,N)), \qquad R = \frac{\operatorname{rad}(N)}{d}.
+d = \mathrm{rad}(\gcd(m,N)), \qquad R = \frac{\mathrm{rad}(N)}{d}.
 $$
 Let $S(L)=\{1\le n\le L : n\equiv a\pmod m,\ \gcd(n,N)=1\}$.
 
 **Case $\gcd(a,d)=1$.** Writing $L=qT_{\min}+s$, $0\le s<T_{\min}$,
 $$
-|S(L)| = q\,\varphi(R) + R_{\mathrm{rem}}(s), \qquad T_{\min} = mR = \operatorname{lcm}(m,\operatorname{rad}(N)),
+|S(L)| = q\,\varphi(R) + R_{\mathrm{rem}}(s), \qquad T_{\min} = mR = \mathrm{lcm}(m,\mathrm{rad}(N)),
 $$
 $T_{\min}$ is the exact minimal period of the indicator $\mathbb1[n\equiv a\pmod m,\ \gcd(n,N)=1]$,
 and against the naive predicted count $\frac{\varphi(N)}{N}\frac{L}{m}$,
@@ -137,8 +137,8 @@ Hence $p\mid t$ for every prime $p\mid R$; since $R$ is squarefree, $R\mid t$, a
 $\gcd(m,R)=1$: $mR\mid t$. Thus $mR\mid t$ for every positive period $t$. Since $mR$ itself is a
 period, it is the exact minimal positive period: $T_{\min}=mR$.
 
-*Ratio.* Write $N=AB$, $A=\prod_{p\mid N,p\mid m}p^{e_p}$ ($\operatorname{rad}(A)=d$),
-$B=\prod_{p\mid N,p\nmid m}p^{e_p}$ ($\operatorname{rad}(B)=R$), $\gcd(A,B)=1$, so
+*Ratio.* Write $N=AB$, $A=\prod_{p\mid N,p\mid m}p^{e_p}$ ($\mathrm{rad}(A)=d$),
+$B=\prod_{p\mid N,p\nmid m}p^{e_p}$ ($\mathrm{rad}(B)=R$), $\gcd(A,B)=1$, so
 $\varphi(N)=\varphi(A)\varphi(B)$. By the Lemma (applied to $k=B$), $\varphi(B)/B=\varphi(R)/R$.
 Then
 $$
@@ -161,12 +161,12 @@ substitution, not by an independent proof.
 
 ### 3.1 Theorem 2 (specialization: $m\mid N$)
 
-If $m\mid N$, then $\gcd(m,N)=m$, so $d=\operatorname{rad}(m)$ directly. Substituting into Theorem
+If $m\mid N$, then $\gcd(m,N)=m$, so $d=\mathrm{rad}(m)$ directly. Substituting into Theorem
 3:
 $$
-R = \frac{\operatorname{rad}(N)}{\operatorname{rad}(m)}, \qquad T_{\min} = m\,\frac{\operatorname{rad}(N)}{\operatorname{rad}(m)}, \qquad C(N,m) = \frac{\operatorname{rad}(m)}{\varphi(\operatorname{rad}(m))} = \frac{m}{\varphi(m)}
+R = \frac{\mathrm{rad}(N)}{\mathrm{rad}(m)}, \qquad T_{\min} = m\,\frac{\mathrm{rad}(N)}{\mathrm{rad}(m)}, \qquad C(N,m) = \frac{\mathrm{rad}(m)}{\varphi(\mathrm{rad}(m))} = \frac{m}{\varphi(m)}
 $$
-(the last equality by the Lemma applied to $k=m$), with admissibility $\gcd(a,\operatorname{rad}(m))=1$
+(the last equality by the Lemma applied to $k=m$), with admissibility $\gcd(a,\mathrm{rad}(m))=1$
 and the same complementary zero branch. No new argument is required beyond this substitution;
 minimality, the exact count $\varphi(R)$, and the ratio are all inherited directly from Theorem 3.
 
@@ -174,25 +174,25 @@ minimality, the exact count $\varphi(R)$, and the ratio are all inherited direct
 
 Call $m$ a *unitary divisor* of $N$ if $\gcd(m,N/m)=1$ — equivalently, $m$ absorbs the full
 exponent of each of its primes in $N$. Under this hypothesis (a strengthening of $m\mid N$), write
-$N'=N/m$. Then $\operatorname{rad}(N)=\operatorname{rad}(m)\operatorname{rad}(N')$ (coprime
-factors), so $R=\operatorname{rad}(N)/\operatorname{rad}(m)=\operatorname{rad}(N')$ and
+$N'=N/m$. Then $\mathrm{rad}(N)=\mathrm{rad}(m)\mathrm{rad}(N')$ (coprime
+factors), so $R=\mathrm{rad}(N)/\mathrm{rad}(m)=\mathrm{rad}(N')$ and
 $$
-T_{\min} = m\operatorname{rad}(N'), \qquad C(N,m)=\frac{m}{\varphi(m)},
+T_{\min} = m\mathrm{rad}(N'), \qquad C(N,m)=\frac{m}{\varphi(m)},
 $$
 as in Theorem 2. The interval $N=mN'$ is also a period of the indicator (it is an integer multiple
-of $T_{\min}$, since $N'/\operatorname{rad}(N')$ is an integer), with total count $\varphi(N')$
+of $T_{\min}$, since $N'/\mathrm{rad}(N')$ is an integer), with total count $\varphi(N')$
 over that longer interval — this matches Theorem 3's prediction exactly (using exponent-blindness
-to check $\varphi(N')/N'=\varphi(\operatorname{rad}(N'))/\operatorname{rad}(N')$), but **$N$ is
+to check $\varphi(N')/N'=\varphi(\mathrm{rad}(N'))/\mathrm{rad}(N')$), but **$N$ is
 generally not the minimal period**: it equals $T_{\min}$ only when $N'$ is itself squarefree.
 
 ### 3.3 Two distinguishing examples
 
 **$N=18,\ m=2$ — coarser vs. minimal period.** Here $m=2$ is a unitary divisor of $N=18=2\cdot3^2$
 ($\gcd(2,9)=1$), so Theorem 1′ applies and gives a valid period of $N=18$ with count
-$\varphi(9)=6$. But $\operatorname{rad}(N')=\operatorname{rad}(9)=3$, so Theorem 3's exact minimal
+$\varphi(9)=6$. But $\mathrm{rad}(N')=\mathrm{rad}(9)=3$, so Theorem 3's exact minimal
 period is
 $$
-T_{\min} = m\operatorname{rad}(N') = 2\cdot3 = 6.
+T_{\min} = m\mathrm{rad}(N') = 2\cdot3 = 6.
 $$
 Direct enumeration confirms this: taking $a=1$, $n\equiv1\pmod2$ and $\gcd(n,18)=1$ (odd and not
 divisible by $3$) gives $\{1,5,7,11,13,17,\dots\}$ in $[1,18]$, i.e. $\{1,5,7,11,13,17\}$ — a
@@ -201,8 +201,8 @@ Theorem 1′ correctly states) but not the minimal one; $6$ is.
 
 **$N=5,\ m=6,\ a=2$ — the sharp admissibility condition.** Here $\gcd(a,m)=\gcd(2,6)=2\ne1$, so
 this case would be *excluded* under Theorem 1's or Theorem 1′'s hypothesis $\gcd(a,m)=1$. But
-$d=\operatorname{rad}(\gcd(6,5))=\operatorname{rad}(1)=1$, and $\gcd(a,d)=\gcd(2,1)=1$: admissible
-under Theorem 3's sharp condition. Here $R=\operatorname{rad}(5)=5$ (since $5\nmid6$),
+$d=\mathrm{rad}(\gcd(6,5))=\mathrm{rad}(1)=1$, and $\gcd(a,d)=\gcd(2,1)=1$: admissible
+under Theorem 3's sharp condition. Here $R=\mathrm{rad}(5)=5$ (since $5\nmid6$),
 $T_{\min}=mR=30$. Direct check, $n\equiv2\pmod6$ in $[1,30]$: $\{2,8,14,20,26\}$; coprime to $5$:
 $\{2,8,14,26\}$ — count $4=\varphi(5)$, matching the theorem. And $C(5,6)=d/\varphi(d)=1$, matching the naive prediction exactly
 ($\varphi(5)/5\cdot(30/6)=4$) — whereas $m/\varphi(m)=6/\varphi(6)=3$ would have been wrong. This
@@ -219,14 +219,14 @@ $P_k$ with $m>1$, and let $a$ be an integer with $\gcd(a,m)=1$.
 If, in addition to $m\mid N$, $N$ is squarefree ($N=P_k$), then every divisor of $N$ — including
 $m$ — is automatically unitary, so Theorem 1′ applies with $N'=P_k/m$; and since $P_k$ is
 squarefree, $N'=P_k/m$ is squarefree too (a divisor of a squarefree number is squarefree), so
-$\operatorname{rad}(N')=N'$ and the coarser and minimal periods of Section 3.2 coincide exactly:
+$\mathrm{rad}(N')=N'$ and the coarser and minimal periods of Section 3.2 coincide exactly:
 $$
-T_{\min}=m\operatorname{rad}(N')=mN'=P_k.
+T_{\min}=m\mathrm{rad}(N')=mN'=P_k.
 $$
-Because $P_k$ is squarefree, $\operatorname{rad}(m)=m$, so $d=\operatorname{rad}(\gcd(m,P_k))=\operatorname{rad}(m)=m$
+Because $P_k$ is squarefree, $\mathrm{rad}(m)=m$, so $d=\mathrm{rad}(\gcd(m,P_k))=\mathrm{rad}(m)=m$
 exactly — the sharp admissibility condition $\gcd(a,d)=1$ used in Theorem 3 is, in this primorial
 setting, *identical* to the hypothesis $\gcd(a,m)=1$ above. This is the same pattern already seen
-in Theorem 2 ($d=\operatorname{rad}(m)$ whenever $m\mid N$); it collapses to an equality here
+in Theorem 2 ($d=\mathrm{rad}(m)$ whenever $m\mid N$); it collapses to an equality here
 specifically because $m$ is squarefree.
 
 This gives:
@@ -388,9 +388,9 @@ $C(10)=10/\varphi(10)=2.5$ and $C(30)=30/\varphi(30)=3.75$ reproduce exactly.)*
 The General Divisor Theorem (Theorem 3) gives an exact, elementary correction to the naive
 independent-density heuristic for counting integers in a fixed residue class that are also
 coprime to a modulus — for arbitrary positive integers $N,m$ and any integer $a$, with no
-divisibility or squarefreeness restriction on either. Writing $d=\operatorname{rad}(\gcd(m,N))$
-for the primes $m$ and $N$ share, and $R=\operatorname{rad}(N)/d$ for what remains, the indicator
-has exact minimal period $T_{\min}=\operatorname{lcm}(m,\operatorname{rad}(N))$, with exactly
+divisibility or squarefreeness restriction on either. Writing $d=\mathrm{rad}(\gcd(m,N))$
+for the primes $m$ and $N$ share, and $R=\mathrm{rad}(N)/d$ for what remains, the indicator
+has exact minimal period $T_{\min}=\mathrm{lcm}(m,\mathrm{rad}(N))$, with exactly
 $\varphi(R)$ accepted values per period, whenever $\gcd(a,d)=1$; the correction factor against the
 naive prediction is then exactly
 $$
