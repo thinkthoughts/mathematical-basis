@@ -15,13 +15,13 @@ $N, m \ge 1$ integers with $m \mid N$, $a \in \mathbb{Z}$.
 
 Let $S(L) = \{n \le L : n \equiv a \pmod m,\ \gcd(n,N)=1\}$.
 
-**Admissible branch: $\gcd(a, \operatorname{rad}(m)) = 1$.** Then $S(L)$ has exact minimal period
+**Admissible branch: $\gcd(a, \mathrm{rad}(m)) = 1$.** Then $S(L)$ has exact minimal period
 $$
-T_{\min} = m\,\frac{\operatorname{rad}(N)}{\operatorname{rad}(m)},
+T_{\min} = m\,\frac{\mathrm{rad}(N)}{\mathrm{rad}(m)},
 $$
 with exactly
 $$
-\varphi(R), \qquad R = \frac{\operatorname{rad}(N)}{\operatorname{rad}(m)},
+\varphi(R), \qquad R = \frac{\mathrm{rad}(N)}{\mathrm{rad}(m)},
 $$
 accepted values per minimal period, and correction factor (against the naive predicted count
 $\frac{\varphi(N)}{N}\cdot\frac{L}{m}$)
@@ -29,13 +29,13 @@ $$
 C(N,m) = \frac{m}{\varphi(m)}.
 $$
 
-**Complementary branch: $\gcd(a, \operatorname{rad}(m)) > 1$.** Then $S(L) = \varnothing$ for
+**Complementary branch: $\gcd(a, \mathrm{rad}(m)) > 1$.** Then $S(L) = \varnothing$ for
 every $L$.
 
 ## Proof — by substitution into Theorem 3
 
 Theorem 3 (proved, not re-derived here) states, for arbitrary $N, m\ge1, a\in\mathbb Z$, with
-$d=\operatorname{rad}(\gcd(m,N))$ and $R=\operatorname{rad}(N)/d$:
+$d=\mathrm{rad}(\gcd(m,N))$ and $R=\mathrm{rad}(N)/d$:
 
 - admissible iff $\gcd(a,d)=1$, else $S(L)=\varnothing$ for every $L$;
 - minimal period $T_{\min}=mR$;
@@ -45,24 +45,24 @@ $d=\operatorname{rad}(\gcd(m,N))$ and $R=\operatorname{rad}(N)/d$:
 **Step 1: specialize $d$.** Since $m \mid N$, every prime dividing $m$ also divides $N$, so
 $\gcd(m,N)=m$ and therefore
 $$
-d = \operatorname{rad}(\gcd(m,N)) = \operatorname{rad}(m).
+d = \mathrm{rad}(\gcd(m,N)) = \mathrm{rad}(m).
 $$
 This is a direct substitution, not a new argument: $d$ is defined identically in both documents,
 and $m\mid N$ collapses $\gcd(m,N)$ to $m$ by definition of divisibility.
 
 **Step 2: specialize the admissibility condition.** Theorem 3's condition $\gcd(a,d)=1$ becomes,
-under Step 1, exactly $\gcd(a,\operatorname{rad}(m))=1$ — matching this document's stated
+under Step 1, exactly $\gcd(a,\mathrm{rad}(m))=1$ — matching this document's stated
 admissible branch verbatim. The complementary branch follows identically from Theorem 3's
 complementary branch.
 
-**Step 3: specialize $R$ and $T_{\min}$.** Substituting $d=\operatorname{rad}(m)$ into
-$R=\operatorname{rad}(N)/d$ gives
+**Step 3: specialize $R$ and $T_{\min}$.** Substituting $d=\mathrm{rad}(m)$ into
+$R=\mathrm{rad}(N)/d$ gives
 $$
-R = \frac{\operatorname{rad}(N)}{\operatorname{rad}(m)},
+R = \frac{\mathrm{rad}(N)}{\mathrm{rad}(m)},
 $$
 matching this document's stated $R$. Then $T_{\min}=mR$ becomes
 $$
-T_{\min} = m\,\frac{\operatorname{rad}(N)}{\operatorname{rad}(m)},
+T_{\min} = m\,\frac{\mathrm{rad}(N)}{\mathrm{rad}(m)},
 $$
 matching the statement above exactly. The exact count per minimal period, $\varphi(R)$, carries
 over unchanged from Theorem 3, since $R$ itself is just the substituted value — no new argument
@@ -70,14 +70,14 @@ is needed for the count or the minimality of $T_{\min}$, both of which are alrea
 arbitrary $(N,m,a)$ in Theorem 3 and therefore hold here as a special case.
 
 **Step 4: specialize $C(N,m)$.** Theorem 3 gives $C=d/\varphi(d)$. Substituting
-$d=\operatorname{rad}(m)$:
+$d=\mathrm{rad}(m)$:
 $$
-C(N,m) = \frac{\operatorname{rad}(m)}{\varphi(\operatorname{rad}(m))}.
+C(N,m) = \frac{\mathrm{rad}(m)}{\varphi(\mathrm{rad}(m))}.
 $$
 By the exponent-blindness lemma (`general-divisor-theorem.md`, "Lemma (exponent-blindness)"),
 applied to $k=m$:
 $$
-\frac{m}{\varphi(m)} = \frac{\operatorname{rad}(m)}{\varphi(\operatorname{rad}(m))}.
+\frac{m}{\varphi(m)} = \frac{\mathrm{rad}(m)}{\varphi(\mathrm{rad}(m))}.
 $$
 Hence $C(N,m) = m/\varphi(m)$, matching the statement above exactly. $\blacksquare$
 
@@ -90,15 +90,15 @@ $d$, $R$, and $T_{\min}$ evaluate to.
 This is the *minimal* period. Where $m$ additionally happens to be a unitary divisor of $N$
 (Theorem 1′'s hypothesis, a further specialization of $m\mid N$), Theorem 1′ states a valid period
 of $N$ itself — but $N$ is generally a proper multiple of the minimal period given here,
-$T_{\min}=m\operatorname{rad}(N/m)$, whenever $N/m$ has a repeated prime factor. See
+$T_{\min}=m\mathrm{rad}(N/m)$, whenever $N/m$ has a repeated prime factor. See
 `specialization-audit.md` and `specialization-audit-repaired.md` for the worked comparison.
 
 ## Worked example: $N=12, m=2, a=1$
 
-$m\mid N$ ($2\mid12$). $\operatorname{rad}(m)=\operatorname{rad}(2)=2$. $\gcd(a,\operatorname{rad}(m))=\gcd(1,2)=1$: admissible branch.
+$m\mid N$ ($2\mid12$). $\mathrm{rad}(m)=\mathrm{rad}(2)=2$. $\gcd(a,\mathrm{rad}(m))=\gcd(1,2)=1$: admissible branch.
 
 $$
-d=2,\qquad R=\frac{\operatorname{rad}(12)}{\operatorname{rad}(2)}=\frac{6}{2}=3,\qquad T_{\min}=2\cdot3=6,\qquad C=\frac{2}{\varphi(2)}=2.
+d=2,\qquad R=\frac{\mathrm{rad}(12)}{\mathrm{rad}(2)}=\frac{6}{2}=3,\qquad T_{\min}=2\cdot3=6,\qquad C=\frac{2}{\varphi(2)}=2.
 $$
 
 Direct check: $n\equiv1\pmod2$ (odd), coprime to $12$ (i.e. also not divisible by $3$), in
