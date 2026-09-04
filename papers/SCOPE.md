@@ -31,6 +31,19 @@ readings admitted by specified constraints.
 
 ---
 
+## Structural Analogy
+
+Two problems may exhibit similar constraint, admissibility, period,
+density, or specification structure.
+
+Such shared structure can support a structural analogy without
+identifying the mathematical objects in the two problems.
+
+A structural analogy does not transfer the objects, hypotheses, or
+conclusions of one theorem to the other problem.
+
+---
+
 ## Direct Theorem Application
 
 A direct application of a theorem requires its mathematical objects and
@@ -49,8 +62,8 @@ C=\frac{d}{\varphi(d)}
 require the corresponding divisor structure, including the specified
 values of \(N,m,a,d\).
 
-Without that structure, the general distinction may still apply, but
-the theorem has not been applied.
+Without that structure, the general distinction or a structural analogy
+may still apply, but the theorem has not been applied.
 
 ---
 
@@ -60,11 +73,16 @@ the theorem has not been applied.
 \boxed{
 \text{general distinction}
 \ne
+\text{structural analogy}
+\ne
 \text{direct theorem application}
 }
 \]
 
-The distinction may apply where the theorem does not.
+The general distinction may apply where the theorem does not.
+
+A structural analogy may identify shared structure without establishing
+a theorem application.
 
 A direct theorem application requires:
 
